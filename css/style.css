@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #D5D5D5;
+	text-align: center;
+	background-image: url("../pictures/fundo.jpg");
+}
+
+body h1 {
+	color: #215FDC;
+}
+
+nav {
+	margin: -8px auto 0px auto;
+}
+
+div#interface {
+	width: 850px;
+	height: auto;
+	background-color: white;
+	margin: -20px auto 0px auto;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	padding: 30px;
+}
+
+#progressbar {
+  	background-color: #161616;
+	border-radius: 13px; 
+	padding: 2px;
+	margin-top: 17px;
+}
+
+#progressbar > div {	
+    background-color: #215FDC;
+   	width: 0%; /* Adjust with Angular */
+   	height: 20px;
+   	border-radius: 10px;
+}
+
+#progressbar span {
+	color: white;
+}
+
+div#interface h1 {
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+div#input_tarefa div input {
+	height: 35px;
+	width: 100%;
+	font-size: 120%;
+	margin-right: 414px;	
+}
+
+div#input_tarefa div select {
+	height: 35px;
+	background-color: white;
+	border-radius: 6px;
+}
+
+div#input_tarefa div {
+	display: inline-block;
+}
+
+div#alert {
+	padding: 2px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+div#valores_totais {
+	padding-top: 8px;
+}
+
+div#valores_totais li {
+	font-size: 130%;
+}
+
+div#resultado h2 {
+	padding-top: 9px;
+}
+
+div#list_tarefa {
+	text-align: left;
+	font-size: 130%;
+}
+
+div#list_tarefa span {
+	margin-left: 10px;
+	font-weight: 100;
+	margin-right: 10px;
+}
+
+div#list_tarefa button {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right:1px;
+	padding-left: 1px;
+	float: right;
+}
+
+a button {
+    cursor: pointer;
+    color: black;
+    background: #FFFFFF;
+    padding: 1px!important;
+    margin-right: 9px;
+    margin-left: -4px!important;
+}
+
+.selecionada {
+	/*color: #008604;*/
+}
+
+footer#rodape {
+	margin-top: 101px;
+	clear: both;
+	border-top: 1px solid #606060;
+}
+
+footer#rodape a {
+	color: #215FDC;
+	text-decoration: none;
+}
+
+.checkbox {
+    margin-left: -30px;
+}
+
+.checkbox label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.4em;
+    float: left;
+    margin-right: .5em;
+}
+
+.checkbox .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.checkbox label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr{
+    opacity: .5;
+}
