@@ -74,7 +74,7 @@ div#alert {
 }
 
 div#alert a {
-	margin-right: 30px;
+	margin-right: 25px;
 }
 
 div#valores_totais {
@@ -106,6 +106,7 @@ div#list_tarefa button {
 	padding-right:1px;
 	padding-left: 1px;
 	float: right;
+	border-radius: 20px;
 }
 
 .selecionada {
@@ -161,7 +162,7 @@ footer#rodape a {
     position: relative;
     display: inline-block;
     border: 1px solid #a9a9a9;
-    border-radius: .25em;
+    border-radius: 20px;
     width: 1.3em;
     height: 1.4em;
     float: left;
