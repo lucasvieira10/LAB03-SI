@@ -35,13 +35,7 @@
                   VAI RESGATAR DO BD AS TAREFAS E ATUALIZAR A PAGINA COM ELAS -->
 
                   <!-- AQUI VAI TER UM NG-REPEAT -->
-                  <li><a href="#">
-
-                    <button class="btn" type="button">
-                      <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-
-                    Ir para casa comer</a></li>
+                  <li><a href="#">Primeira Tarefa</a></li>
 
                   <li class="divider"></li>
                   <li><a href="#">Ver detalhes</a></li> 
@@ -85,7 +79,7 @@
           </div>
 
           <div>
-            <select ng-model="tarefa.prioridade" ng-options="prioridade.tipo for prioridade in prioridades" ng-required="true">
+            <select ng-model="tarefa.prioridade" ng-options="prioridade for prioridade in prioridades" ng-required="true">
               <option value="">Selecione uma prioridade</option>
             </select>
           </div>
@@ -93,17 +87,22 @@
 
       </div>
 
-      <div id="alert" ng-show="tarefaForm.$invalid" class="alert alert-danger">
-          Por favor, escreva a tarefa e selecione sua prioridade!
+      <div id="alert" ng-show="tarefaForm.$invalid" class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Aviso!</strong> Por favor, escreva uma tarefa e selecione sua prioridade!
       </div>
 
       <!-- Botao para adicionar uma nova tarefa -->
       <button id="button_addTarefa" type="button" class="btn btn-success" ng-click="adicionarTarefa(tarefa)" 
-        ng-disabled="tarefaForm.$invalid">Adicionar Tarefa</button>
+        ng-disabled="tarefaForm.$invalid">
+        <span class="glyphicon glyphicon-plus"> Adicionar</span>
+      </button>
       
       <!-- Botao para limpar toda a lista de tarefas -->
       <button id="button_cleanTarefas" type="button" class="btn btn-danger" ng-click="limparTarefas()"
-        ng-disabled="!estaVazia(tarefas)">Limpar Tarefas</button>
+        ng-disabled="!estaVazia(tarefas)">
+        <span class="glyphicon glyphicon-trash"> Limpar</span>
+      </button>
 
       <div id="valores_totais">
         <h2>Detalhes</h2>
@@ -151,6 +150,15 @@
               </div>
             </li>
         </div>
+
+        <button id="btn_save" type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"> Salvar</span>
+        </button>
+        
+        <button id="btn_delete" type="button" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"> Excluir</span>
+        </button>
+
       </div>
     </section>
 

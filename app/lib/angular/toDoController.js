@@ -3,7 +3,7 @@ angular.module("toDoList", []);
 angular.module("toDoList").controller("toDoListController", function($scope) {
 	var self = $scope;
 
-	self.tarefasParaCumprir = 3;
+	self.tarefasParaCumprir = 0;
 	self.tarefasJaConcluidas = 0;
 
 	self.tarefas = [
@@ -13,10 +13,7 @@ angular.module("toDoList").controller("toDoListController", function($scope) {
 	];
 
 	self.prioridades = [
-		{tipo: 1},
-		{tipo: 2},
-		{tipo: 3},
-		{tipo: 4}
+		1, 2, 3, 4
 	];
 
 	self.adicionarTarefa = function(tarefa) {
