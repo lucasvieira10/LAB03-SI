@@ -14,18 +14,16 @@ public class Task {
     @Id
     private String id;
 
-    private String text;
-    private String description;
-    private boolean checked;
-    private int priority;
+    private String nome;
+    private int prioridade;
+    private boolean selecionada;
 
     public Task() {}
 
-    public Task(String text, String description, boolean checked, int priority) {
-        this.text = text;
-        this.description = description;
-        this.checked = checked;
-        this.priority = priority;
+    public Task(String nome, int prioridade, boolean selecionada) {
+        this.nome = nome;
+        this.prioridade = prioridade;
+        this.selecionada = selecionada;
     }
 
     public String getId() {
@@ -36,36 +34,28 @@ public class Task {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getNome() {
+        return nome;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescription() {
-        return description;
+    public int getPrioridade() {
+        return prioridade;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrioridade(int prioridade) {
+        this.prioridade = prioridade;
     }
 
-    public boolean isChecked() {
-        return checked;
+    public boolean isSelecionada() {
+        return selecionada;
     }
 
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
+    public void setSelecionada(boolean selecionada) {
+        this.selecionada = selecionada;
     }
 
     @Override
@@ -75,23 +65,22 @@ public class Task {
 
         Task task = (Task) o;
 
-        return text != null ? text.equals(task.text) : task.text == null;
+        return nome != null ? nome.equals(task.nome) : task.nome == null;
 
     }
 
     @Override
     public int hashCode() {
-        return text != null ? text.hashCode() : 0;
+        return nome != null ? nome.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Task{" +
                 "id='" + id + '\'' +
-                ", text='" + text + '\'' +
-                ", description='" + description + '\'' +
-                ", checked=" + checked +
-                ", priority=" + priority +
+                ", nome='" + nome + '\'' +
+                ", prioridade='" + prioridade + '\'' +
+                ", selecionada=" + selecionada +
                 '}';
     }
 }

@@ -27,11 +27,13 @@ public class TaskController {
     @Autowired
     private TaskRepository repository;
 
+    @CrossOrigin
     @GetMapping(value = ROUTE)
     public List<Task> getTasks() {
         return repository.findAll();
     }
 
+    @CrossOrigin
     @PostMapping(value = ROUTE)
     public ResponseEntity<?> addTask(@ModelAttribute Task task) {
         if (! containsTask(task)) {

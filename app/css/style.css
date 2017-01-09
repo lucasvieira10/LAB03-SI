@@ -109,6 +109,11 @@ div#list_tarefa button {
 	border-radius: 20px;
 }
 
+#prioridadeTarefa {
+	font-size: 75%;
+	color: #215FDC;
+}
+
 .selecionada {
 	/*color: #008604;*/
 }

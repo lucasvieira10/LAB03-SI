@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Agenda de Tarefas</title>
+    <link rel="icon" href="pictures/icon.png">
 
     <!-- Bootstrap -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +14,7 @@
   </head>
   
   <body>
-    <div id="interface">
+    <div ng-controller="toDoListController" id="interface">
 
     <!-- Barra de menu do bootstrap -->
       <nav class="navbar navbar-inverse">
@@ -29,13 +30,13 @@
             	
             	Agendas <b class="caret"></b></a>
 
-            	<!-- CRIACAO DE UM SUB MENU PARA AS TAREFAS -->
+            	<!-- Sub menu para as tarefas -->
             	<ul class="dropdown-menu">
                   <!-- QUANDO EU CLICAR EM ALGUMA DESSAS TEREFAS
                   VAI RESGATAR DO BD AS TAREFAS E ATUALIZAR A PAGINA COM ELAS -->
 
                   <!-- AQUI VAI TER UM NG-REPEAT -->
-                  <li><a href="#">Primeira Tarefa</a></li>
+                  <li ng-repeat="agenda in agendas"><a href="#">{{agenda.nome}}</a></li>
 
                   <li class="divider"></li>
                   <li><a href="#">Ver detalhes</a></li> 
@@ -66,7 +67,7 @@
         </div>
       </nav>
 
-    <section ng-controller="toDoListController" id="conteudo_principal">
+    <section id="conteudo_principal">
       <h1>Agenda de Tarefas</h1>
 
       <!-- Entrada para o nome da tarefa -->
@@ -75,11 +76,12 @@
           
           <div>
             <input type="text" ng-model="tarefa.nome" class="form-control" id="tarefa" placeholder="Escreva uma tarefa..." 
-              maxlength="62" ng-required="true">
+              ng-minlength="10" maxlength="70" ng-required="true" name="tarefa">
           </div>
 
           <div>
-            <select ng-model="tarefa.prioridade" ng-options="prioridade for prioridade in prioridades" ng-required="true">
+            <select ng-model="tarefa.prioridade" ng-options="prioridade for prioridade in prioridades" ng-required="true"
+              name="prioridade">
               <option value="">Selecione uma prioridade</option>
             </select>
           </div>
@@ -87,9 +89,20 @@
 
       </div>
 
-      <div id="alert" ng-show="tarefaForm.$invalid" class="alert alert-info alert-dismissable">
+      <!-- Avisos | Validacao-->
+      <div id="alert" ng-show="tarefaForm.tarefa.$error.required && tarefaForm.$dirty" class="alert alert-info alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Aviso!</strong> Por favor, escreva uma tarefa e selecione sua prioridade.
+          <strong>Aviso!</strong> Por favor, escreva uma tarefa.
+      </div>
+
+      <div id="alert" ng-show="tarefaForm.tarefa.$error.minlength" class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Aviso!</strong> O campo tarefa deve ter no mínimo 10 caracteres.
+      </div>
+
+      <div id="alert" ng-show="tarefaForm.tarefa.$valid && tarefaForm.prioridade.$invalid" class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Aviso!</strong> Por favor, selecione uma prioridade.
       </div>
 
       <!-- Botao para adicionar uma nova tarefa -->
@@ -133,19 +146,17 @@
                   <input type="checkbox" ng-model="tarefa.selecionada" ng-click="atualizarStatusDasTarefas()">
                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                   
-                  <span>{{tarefa.nome}}</span>
+                  <span id="nomeTarefa">{{tarefa.nome}}</span>
+                  
+                  <div>
+                    <span id="prioridadeTarefa">{{'Prioridade: ' + tarefa.prioridade}}</span>
+                  </div>
 
                 </label>
         
                 <button ng-click="removerTarefa(tarefa)" type="button" class="btn btn-danger" id="removerButton">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button> 
-
-                <!-- {{tarefa}} -->
-
-                <!-- <button class="btn btn-success green" type="button">
-                  <span class="glyphicon glyphicon-pencil"></span>
-                </button> -->
 
               </div>
             </li>
