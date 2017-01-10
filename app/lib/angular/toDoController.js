@@ -17,10 +17,12 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 		1, 2, 3, 4
 	];
 
+	var tasksUrl = 'http://localhost:5000/tasks';
+
 	var carregarTarefas = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:5000/tasks'
+			url: tasksUrl
 			}).then(function successCallback(response) {
 	   	        $scope.tarefas = response.data;
 	   	        console.log("get successfully");
@@ -35,7 +37,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 
         $http({
         	method: 'POST',
-            url: 'http://localhost:5000/tasks',
+            url: tasksUrl,
             data: params,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
          }).then(function successCallback(response) {
