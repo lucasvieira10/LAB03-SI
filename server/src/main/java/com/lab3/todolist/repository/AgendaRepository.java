@@ -1,6 +1,6 @@
 package com.lab3.todolist.repository;
 
-import com.lab3.todolist.model.Task;
+import com.lab3.todolist.model.Agenda;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 
 
-public interface TaskRepository extends MongoRepository<Task, String> {
+public interface AgendaRepository extends MongoRepository<Agenda, String> {
 
-    Task findById(String id);
+    Agenda findById(String id);
 }

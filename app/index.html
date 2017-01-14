@@ -11,6 +11,7 @@
     <!-- Bootstrap -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
   </head>
   
   <body>
@@ -51,9 +52,9 @@
 
               <ul class="dropdown-menu">
                  
-                  <li><a href="#">Criar nova agenda</a></li>
+                  <li id="criar_agenda"><a href="#openModal">Criar nova agenda</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Excluir agendas</a></li>
+                  <li><a href="#" ng-click="excluirAgendas()">Excluir agendas</a></li>
                 </ul>
             </li>
 
@@ -91,17 +92,14 @@
 
       <!-- Avisos | Validacao-->
       <div id="alert" ng-show="tarefaForm.tarefa.$error.required && tarefaForm.$dirty" class="alert alert-info alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Aviso!</strong> Por favor, escreva uma tarefa.
       </div>
 
       <div id="alert" ng-show="tarefaForm.tarefa.$error.minlength" class="alert alert-info alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Aviso!</strong> O campo tarefa deve ter no mínimo 10 caracteres.
       </div>
 
       <div id="alert" ng-show="tarefaForm.tarefa.$valid && tarefaForm.prioridade.$invalid" class="alert alert-info alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Aviso!</strong> Por favor, selecione uma prioridade.
       </div>
 
@@ -169,8 +167,34 @@
         <button id="btn_delete" type="button" class="btn btn-danger">
           <span class="glyphicon glyphicon-remove"> Excluir</span>
         </button>
-
+      
       </div>
+
+       <!-- Modal da Agenda para cria-la -->
+      <div id="openModal" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close">X</a>
+          <div id="modal_criar_agenda"><span>Criar Agenda</span></div>
+          <input ng-model="agenda.nome" type="text" class="form-control" placeholder="Escreva um nome..."/>
+
+          <a href="#close">
+            <button ng-click="salvarAgenda(agenda.nome)" type="button" class="btn btn-success" id="btn_salvarAgenda">
+              <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
+            </button>
+          </a>
+
+          <a href="#close">
+            <button type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"> Cancelar</span>
+            </button>
+          </a>
+          
+        </div>
+      </div>
+
+      {{agendas}}
+      {{tarefas}}
+
     </section>
 
     <!-- Rodape da pagina -->
@@ -178,13 +202,22 @@
       <p>Copyright &copy; 2016 - by Lucas Vieira
       <br/> <a href="https://github.com/lucasvieira10" target="_blank">GitHub</a></p>
     </footer>
-  </div>
+    </div>
 
     <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular/toDoController.js"></script>
+    <script src="js/controllers/toDoController.js"></script>
+    <script src="js/services/agendaAPIService.js"></script>
+    <script src="js/models/agenda.js"></script>
+    <script src="js/models/tarefa.js"></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
   </body>
 </html>

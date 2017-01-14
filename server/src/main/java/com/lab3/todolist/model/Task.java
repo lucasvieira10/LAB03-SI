@@ -1,7 +1,6 @@
 package com.lab3.todolist.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.Id;
 
 /**
  * Created by lucas on 05/01/17.
@@ -11,16 +10,15 @@ import org.springframework.data.annotation.Id;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Task {
 
-    @Id
     private String id;
-
     private String nome;
     private int prioridade;
     private boolean selecionada;
 
     public Task() {}
 
-    public Task(String nome, int prioridade, boolean selecionada) {
+    public Task(String id, String nome, int prioridade, boolean selecionada) {
+        this.id = id;
         this.nome = nome;
         this.prioridade = prioridade;
         this.selecionada = selecionada;
@@ -79,7 +77,7 @@ public class Task {
         return "Task{" +
                 "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
-                ", prioridade='" + prioridade + '\'' +
+                ", prioridade=" + prioridade +
                 ", selecionada=" + selecionada +
                 '}';
     }

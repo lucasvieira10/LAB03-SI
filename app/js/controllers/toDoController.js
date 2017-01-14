@@ -1,15 +1,12 @@
 angular.module("toDoList", []);
 
-angular.module("toDoList").controller("toDoListController", function($scope, $http) {
+angular.module("toDoList").controller("toDoListController", function($scope, $http, agendaAPI) {
 	var self = $scope;
 
 	self.tarefasParaCumprir = 0;
 	self.tarefasJaConcluidas = 0;
 
-	self.agendas = [
-		{nome: "Graduação de computação"},
-		{nome: "Trabalhar no embedded"}
-	];
+	self.agendas = [];
 
 	self.tarefas = [];
 
@@ -17,45 +14,46 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 		1, 2, 3, 4
 	];
 
-	var tasksUrl = 'http://localhost:5000/tasks';
-
-	var carregarTarefas = function() {
-	    $http({
-			method: 'GET',
-			url: tasksUrl
-			}).then(function successCallback(response) {
-	   	        $scope.tarefas = response.data;
-	   	        console.log("get successfully");
-
-			}, function errorCallback(response) {
-	   	        console.log("get fail");
-			});
+	var carregarAgendas = function () {
+		agendaAPI.obterAgendas().then(function (agendas) {
+			self.agendas = agendas;
+		});
 	};
 
-	var salvarTarefa = function(tarefa) {
-		var params = $.param({ 'nome': tarefa.nome, 'prioridade': tarefa.prioridade, 'selecionada': false });
+	self.salvarAgenda = function(nome) {
+		var agenda = new Agenda(nome, 0, 0);
 
-        $http({
-        	method: 'POST',
-            url: tasksUrl,
-            data: params,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-         }).then(function successCallback(response) {
-	   	        console.log("post successfully");
-
-			}, function errorCallback(response) {
-	   	        console.log("post fail");
-			});;
+		agendaAPI.salvarAgendas(agenda).then(carregarAgendas);
+		delete self.agenda;
 	};
+
+	self.excluirAgendas = function () {
+		self.agendas = [];
+	}
+
+	// METODOS PARA AJEITAR -------------------------------------------
 
 	self.adicionarTarefa = function(tarefa) {
 		self.tarefasParaCumprir++;
 
-		self.tarefas.push(angular.copy(tarefa));
+		var params = $.param({ 'id': '1231231231', 'nome': tarefa.nome, 'prioridade': tarefa.prioridade, 
+			'selecionada': false });
+
+        $http({
+        	method: 'POST',
+            url: 'http://localhost:5000/agendas/587a849023464514c52dbc0d/tasks',
+            data: params,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+        }).then(function successCallback(response) {
+	   	        console.log("post successfully");
+
+		}, function errorCallback(response) {
+	   	        console.log("post fail");
+		});
+
+		self.tarefas.push(tarefa);
 		delete self.tarefa;
 		self.tarefaForm.$setPristine();
-
-		salvarTarefa(tarefa);
 	};
 
 	self.limparTarefas = function() {
@@ -100,5 +98,6 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 		return tarefa.selecionada;
 	};
 
-	carregarTarefas();
+	carregarAgendas();
+	// carregarTarefas();
 });
