@@ -59,7 +59,7 @@ public class AgendaController {
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> updateAgenda(@PathVariable(AGENDA_ID) String id, @RequestBody Agenda agenda) {
+    public ResponseEntity<Agenda> updateAgenda(@PathVariable(AGENDA_ID) String id, @RequestBody Agenda agenda) {
         Agenda searchAgenda = agendaRepository.findById(id);
 
         searchAgenda.setNome(agenda.getNome());
@@ -68,7 +68,7 @@ public class AgendaController {
 
         agendaRepository.save(searchAgenda);
 
-        return new ResponseEntity<>(UPDATE_AGENDA, HttpStatus.OK);
+        return new ResponseEntity<>(agenda, HttpStatus.OK);
     }
 
     @CrossOrigin
@@ -101,13 +101,13 @@ public class AgendaController {
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> addTask(@PathVariable(AGENDA_ID) String id, @RequestBody Task task) {
+    public ResponseEntity<Task> addTask(@PathVariable(AGENDA_ID) String id, @RequestBody Task task) {
         Agenda agenda = agendaRepository.findById(id);
         agenda.addTarefa(task);
 
         agendaRepository.save(agenda);
 
-        return new ResponseEntity<>(ADDED_TASK, HttpStatus.CREATED);
+        return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
     @CrossOrigin
@@ -115,7 +115,7 @@ public class AgendaController {
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> updateTask(@PathVariable(AGENDA_ID) String agendaID,
+    public ResponseEntity<Task> updateTask(@PathVariable(AGENDA_ID) String agendaID,
                                              @PathVariable(TASK_ID) String taskId,
                                              @RequestBody Task task) {
 
@@ -134,7 +134,7 @@ public class AgendaController {
 
         agendaRepository.save(agenda);
 
-        return new ResponseEntity<>(UPDATE_AGENDA, HttpStatus.OK);
+        return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
     @CrossOrigin

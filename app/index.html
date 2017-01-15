@@ -37,7 +37,7 @@
                   VAI RESGATAR DO BD AS TAREFAS E ATUALIZAR A PAGINA COM ELAS -->
 
                   <!-- AQUI VAI TER UM NG-REPEAT -->
-                  <li ng-repeat="agenda in agendas"><a href="#">{{agenda.nome}}</a></li>
+                  <li ng-repeat="agenda in agendas"><a href="#" ng-click="carregarTarefas(agenda.id)">{{agenda.nome}}</a></li>
 
                   <li class="divider"></li>
                   <li><a href="#">Ver detalhes</a></li> 
@@ -104,7 +104,7 @@
       </div>
 
       <!-- Botao para adicionar uma nova tarefa -->
-      <button id="button_addTarefa" type="button" class="btn btn-success" ng-click="adicionarTarefa(tarefa)" 
+      <button id="button_addTarefa" type="button" class="btn btn-success" ng-click="salvarTarefa(tarefa)" 
         ng-disabled="tarefaForm.$invalid">
         <span class="glyphicon glyphicon-plus"> Adicionar</span>
       </button>
@@ -160,17 +160,17 @@
             </li>
         </div>
 
-        <button id="btn_save" type="button" class="btn btn-success">
+        <!-- <button id="btn_save" type="button" class="btn btn-success">
           <span class="glyphicon glyphicon-ok"> Salvar</span>
         </button>
         
         <button id="btn_delete" type="button" class="btn btn-danger">
           <span class="glyphicon glyphicon-remove"> Excluir</span>
-        </button>
+        </button> -->
       
       </div>
 
-       <!-- Modal da Agenda para cria-la -->
+       <!-- Modal para criar a Agenda -->
       <div id="openModal" class="modalDialog">
         <div>
           <a href="#close" title="Close" class="close">X</a>
@@ -191,10 +191,10 @@
           
         </div>
       </div>
-
+<!-- 
       {{agendas}}
       {{tarefas}}
-
+ -->
     </section>
 
     <!-- Rodape da pagina -->

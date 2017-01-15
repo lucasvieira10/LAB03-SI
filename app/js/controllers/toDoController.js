@@ -14,17 +14,41 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 		1, 2, 3, 4
 	];
 
+	var idAgendaAtual = "";
+
 	var carregarAgendas = function () {
 		agendaAPI.obterAgendas().then(function (agendas) {
 			self.agendas = agendas;
 		});
 	};
 
+	self.carregarTarefas = function (agendaID) {
+		agendaAPI.obterTarefas(agendaID).then(function (tarefas) {
+			self.tarefas = tarefas;
+		});
+
+		idAgendaAtual = agendaID;
+	};
+
 	self.salvarAgenda = function(nome) {
 		var agenda = new Agenda(nome, 0, 0);
 
-		agendaAPI.salvarAgendas(agenda).then(carregarAgendas);
+		agendaAPI.salvarAgenda(agenda).then(carregarAgendas);
 		delete self.agenda;
+	};
+
+	self.salvarTarefa = function(tarefa) {
+		tarefa.id = idAgendaAtual;
+		agendaAPI.salvarTarefa(tarefa, idAgendaAtual).then(self.carregarTarefas(idAgendaAtual));
+
+		self.tarefasParaCumprir++;	
+
+		delete self.tarefa;
+		self.tarefaForm.$setPristine();
+
+		if (self.tarefas.length == 0) {
+			self.carregarTarefas(idAgendaAtual);
+		}
 	};
 
 	self.excluirAgendas = function () {
@@ -34,22 +58,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 	// METODOS PARA AJEITAR -------------------------------------------
 
 	self.adicionarTarefa = function(tarefa) {
-		self.tarefasParaCumprir++;
-
-		var params = $.param({ 'id': '1231231231', 'nome': tarefa.nome, 'prioridade': tarefa.prioridade, 
-			'selecionada': false });
-
-        $http({
-        	method: 'POST',
-            url: 'http://localhost:5000/agendas/587a849023464514c52dbc0d/tasks',
-            data: params,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
-        }).then(function successCallback(response) {
-	   	        console.log("post successfully");
-
-		}, function errorCallback(response) {
-	   	        console.log("post fail");
-		});
+		self.tarefasParaCumprir++;	
 
 		self.tarefas.push(tarefa);
 		delete self.tarefa;

@@ -14,12 +14,33 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		return promessa.promise;
 	};
 
-	var _salvarAgendas = function(agenda) {
+	var _salvarAgenda = function(agenda) {
 		return $http.post(agendasUrl, agenda);
 	};
 
+	var _obterTarefas = function(agendaID) {
+		var promessa = $q.defer();
+
+		$http.get(agendasUrl + "/" + agendaID + "/tasks")
+			.then(function (resultado) {
+				var tarefas = resultado.data;
+
+				promessa.resolve(tarefas);
+			});
+
+		return promessa.promise;
+	};
+
+
+	var _salvarTarefa = function(tarefa, agendaID) {
+		var url = agendasUrl + "/" + agendaID + "/tasks";
+		return $http.post(url, tarefa);
+	}
+
 	return {
 		obterAgendas: _obterAgendas,
-		salvarAgendas: _salvarAgendas
+		salvarAgenda: _salvarAgenda,
+		obterTarefas: _obterTarefas,
+		salvarTarefa: _salvarTarefa
 	};
 });
