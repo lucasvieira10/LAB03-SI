@@ -1,6 +1,6 @@
 angular.module("toDoList", []);
 
-angular.module("toDoList").controller("toDoListController", function($scope, $http, agendaAPI) {
+angular.module("toDoList").controller("toDoListController", function($scope, agendaAPI) {
 	var self = $scope;
 
 	self.tarefasParaCumprir = 0;
@@ -31,52 +31,36 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 	};
 
 	self.salvarAgenda = function(nome) {
-		var agenda = new Agenda(nome, 0, 0);
-
-		agendaAPI.salvarAgenda(agenda).then(carregarAgendas);
+		agendaAPI.salvarAgenda(new Agenda(nome, 0, 0)).then(carregarAgendas);
 		delete self.agenda;
 	};
 
-	self.salvarTarefa = function(tarefa) {
-		tarefa.id = idAgendaAtual;
-		agendaAPI.salvarTarefa(tarefa, idAgendaAtual).then(self.carregarTarefas(idAgendaAtual));
+	self.atualizarAgenda = function() {
+		// aqui vai setar os numeros na agenda...
+	};
 
+	self.salvarTarefa = function(tarefa) {
+		tarefa.id = Date.now();
+		agendaAPI.salvarTarefa(tarefa, idAgendaAtual);
+
+		self.tarefas.push(tarefa);
 		self.tarefasParaCumprir++;	
 
 		delete self.tarefa;
 		self.tarefaForm.$setPristine();
-
-		if (self.tarefas.length == 0) {
-			self.carregarTarefas(idAgendaAtual);
-		}
 	};
 
 	self.excluirAgendas = function () {
-		self.agendas = [];
+		agendaAPI.removerAgendas().then(carregarAgendas);
 	}
 
-	// METODOS PARA AJEITAR -------------------------------------------
-
-	self.adicionarTarefa = function(tarefa) {
-		self.tarefasParaCumprir++;	
-
-		self.tarefas.push(tarefa);
-		delete self.tarefa;
-		self.tarefaForm.$setPristine();
-	};
-
-	self.limparTarefas = function() {
-		self.tarefas.splice(0, self.tarefas.length);
-
-		self.tarefasParaCumprir = 0;
-		self.tarefasJaConcluidas = 0;
-	};
-
 	self.removerTarefa = function(tarefa) {
+		agendaAPI.removerTarefa(idAgendaAtual, tarefa.id);	
+
 		var indexTarefa = self.tarefas.indexOf(tarefa);
 		self.tarefas.splice(indexTarefa, 1);
 
-		self.atualizarStatusDasTarefas();		
+		self.atualizarStatusDasTarefas();
 	};
 
 	self.porcentagemDasTarefasConcluidas = function() {
@@ -84,7 +68,26 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 		var porcentagemArredondada = parseFloat(porcentagem.toFixed(1));
 
 		return porcentagemArredondada;
-	}; 
+	};
+
+	self.estaVazia = function(tarefas) {
+		return (tarefas.length > 0);
+	};
+
+	var tarefaEstaSelecionada = function(tarefa) {
+		return tarefa.selecionada;
+	};
+
+	carregarAgendas();
+
+	// METODOS PARA AJEITAR -------------------------------------------
+
+	self.limparTarefas = function() {
+		self.tarefas.splice(0, self.tarefas.length);
+
+		self.tarefasParaCumprir = 0;
+		self.tarefasJaConcluidas = 0;
+	};
 
 	self.atualizarStatusDasTarefas = function() {
 		self.tarefasParaCumprir = 0;
@@ -98,15 +101,4 @@ angular.module("toDoList").controller("toDoListController", function($scope, $ht
 			}
 		}
 	};
-
-	self.estaVazia = function(tarefas) {
-		return (tarefas.length > 0);
-	};
-
-	var tarefaEstaSelecionada = function(tarefa) {
-		return tarefa.selecionada;
-	};
-
-	carregarAgendas();
-	// carregarTarefas();
 });

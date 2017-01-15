@@ -37,10 +37,21 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		return $http.post(url, tarefa);
 	}
 
+	var _removerTarefa = function(agendaID, tarefaID) {
+		var url = agendasUrl + "/" + agendaID + "/tasks/" + tarefaID;
+		return  $http.delete(url);
+	};
+
+	var _removerAgendas = function() {
+		return $http.delete(agendasUrl);
+	}
+
 	return {
 		obterAgendas: _obterAgendas,
 		salvarAgenda: _salvarAgenda,
 		obterTarefas: _obterTarefas,
-		salvarTarefa: _salvarTarefa
+		salvarTarefa: _salvarTarefa,
+		removerTarefa: _removerTarefa,
+		removerAgendas: _removerAgendas
 	};
 });

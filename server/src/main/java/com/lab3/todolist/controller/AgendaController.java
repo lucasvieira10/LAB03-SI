@@ -73,15 +73,23 @@ public class AgendaController {
 
     @CrossOrigin
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID)
-    public ResponseEntity<String> deleteAgenda(@PathVariable(AGENDA_ID) String id) {
+    public ResponseEntity<Void> deleteAgenda(@PathVariable(AGENDA_ID) String id) {
         Agenda agenda = agendaRepository.findById(id);
 
         if (agenda != null) {
             agendaRepository.delete(agenda);
-            return new ResponseEntity<>(SUCCESSFULLY_DELETED, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(NOT_DELETED, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @CrossOrigin
+    @DeleteMapping(value =  AGENDA_ROUTE)
+    public ResponseEntity<Void> deleteAgendas() {
+        agendaRepository.deleteAll();
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
@@ -139,7 +147,7 @@ public class AgendaController {
 
     @CrossOrigin
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID)
-    public ResponseEntity<String> deleteTask(@PathVariable(AGENDA_ID) String agendaID,
+    public ResponseEntity<Void> deleteTask(@PathVariable(AGENDA_ID) String agendaID,
                                              @PathVariable(TASK_ID) String taskId) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
@@ -155,6 +163,6 @@ public class AgendaController {
 
         agendaRepository.save(agenda);
 
-        return new ResponseEntity<>(SUCCESSFULLY_DELETED, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
