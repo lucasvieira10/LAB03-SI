@@ -7,27 +7,18 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.tarefasJaConcluidas = 0;
 
 	self.agendas = [];
-
 	self.tarefas = [];
 
-	self.prioridades = [
-		1, 2, 3, 4
-	];
+	self.prioridades = [1, 2, 3, 4];
 
-	var idAgendaAtual = "";
+	var agendaAtual;
 
-	var carregarAgendas = function () {
-		agendaAPI.obterAgendas().then(function (agendas) {
-			self.agendas = agendas;
-		});
-	};
-
-	self.carregarTarefas = function (agendaID) {
-		agendaAPI.obterTarefas(agendaID).then(function (tarefas) {
-			self.tarefas = tarefas;
+	self.carregarDadosDaAgendaAtual = function (agenda) {
+		agendaAPI.obterTarefas(agenda.id).then(function (tarefas) {
+			self.tarefas = tarefas;			
 		});
 
-		idAgendaAtual = agendaID;
+		atualizarDadosDaAgendaAtual(agenda);
 	};
 
 	self.salvarAgenda = function(nome) {
@@ -36,57 +27,50 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	};
 
 	self.atualizarAgenda = function() {
-		// aqui vai setar os numeros na agenda...
+		agendaAPI.atualizarAgenda(new Agenda(agendaAtual.nome, self.tarefasParaCumprir, 
+			self.tarefasJaConcluidas), agendaAtual.id).then(atualizarTarefas);
+	};
+
+	self.removerAgenda = function() {
+		agendaAPI.removerAgenda(agendaAtual.id).then(carregarAgendas);
+
+		self.tarefas = [];
+	};
+
+	self.excluirAgendas = function () {
+		agendaAPI.removerAgendas().then(carregarAgendas);
 	};
 
 	self.salvarTarefa = function(tarefa) {
 		tarefa.id = Date.now();
-		agendaAPI.salvarTarefa(tarefa, idAgendaAtual);
+		agendaAPI.salvarTarefa(tarefa, agendaAtual.id).then(carregarTarefas);
 
-		self.tarefas.push(tarefa);
-		self.tarefasParaCumprir++;	
+		self.tarefasParaCumprir++;
 
 		delete self.tarefa;
 		self.tarefaForm.$setPristine();
 	};
 
-	self.excluirAgendas = function () {
-		agendaAPI.removerAgendas().then(carregarAgendas);
-	}
-
 	self.removerTarefa = function(tarefa) {
-		agendaAPI.removerTarefa(idAgendaAtual, tarefa.id);	
-
-		var indexTarefa = self.tarefas.indexOf(tarefa);
-		self.tarefas.splice(indexTarefa, 1);
-
-		self.atualizarStatusDasTarefas();
+		agendaAPI.removerTarefa(agendaAtual.id, tarefa.id).then(carregarTarefas);
 	};
 
 	self.porcentagemDasTarefasConcluidas = function() {
 		var porcentagem = (self.tarefasJaConcluidas / self.tarefas.length) * 100;
-		var porcentagemArredondada = parseFloat(porcentagem.toFixed(1));
-
-		return porcentagemArredondada;
+		return parseFloat(porcentagem.toFixed(1));
 	};
 
 	self.estaVazia = function(tarefas) {
 		return (tarefas.length > 0);
 	};
 
-	var tarefaEstaSelecionada = function(tarefa) {
-		return tarefa.selecionada;
-	};
-
-	carregarAgendas();
-
-	// METODOS PARA AJEITAR -------------------------------------------
-
 	self.limparTarefas = function() {
-		self.tarefas.splice(0, self.tarefas.length);
+        self.tarefasParaCumprir = 0;
+        self.tarefasJaConcluidas = 0;
 
-		self.tarefasParaCumprir = 0;
-		self.tarefasJaConcluidas = 0;
+        self.tarefas = [];
+
+		agendaAPI.removerTarefas(agendaAtual.id).then(self.atualizarAgenda);
 	};
 
 	self.atualizarStatusDasTarefas = function() {
@@ -101,4 +85,37 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 			}
 		}
 	};
+
+    var carregarAgendas = function () {
+        agendaAPI.obterAgendas().then(function (agendas) {
+            self.agendas = agendas;
+        });
+    };
+
+    var atualizarDadosDaAgendaAtual = function (agenda) {
+        self.tarefasParaCumprir = agenda.tarefasParaCumprir;
+        self.tarefasJaConcluidas = agenda.tarefasJaConcluidas;
+
+        agendaAtual = agenda;
+    };
+
+    var atualizarTarefas = function() {
+        for (var i in self.tarefas) {
+            agendaAPI.atualizarTarefa(self.tarefas[i], agendaAtual.id);
+        }
+    };
+
+    var carregarTarefas = function () {
+        agendaAPI.obterTarefas(agendaAtual.id).then(function (tarefas) {
+            self.tarefas = tarefas;
+
+            self.atualizarStatusDasTarefas();
+        });
+    };
+
+    var tarefaEstaSelecionada = function(tarefa) {
+        return tarefa.selecionada;
+    };
+
+	carregarAgendas();
 });

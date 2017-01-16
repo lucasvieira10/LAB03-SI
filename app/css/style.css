@@ -219,6 +219,29 @@ modal para criar agenda
 	padding: 1px;
 }
 
+/* model para alterar tarefa */
+
+#modal_alterar_tarefa {
+	background-color: #161616;
+	color: white;
+	font-size: 200%;
+	border-radius: 5px;
+	padding-bottom: 0px;
+	margin-top: -20px;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-bottom: 1px;
+	padding: 1px;
+}
+
+#openModalAlterarTarefa textarea {
+	height: 100px;
+	width: 392px;
+	margin-left: -13px;
+	margin-top: 10px;
+	resize: none;
+}
+
 .modalDialog input {
 	margin-top: 10px; 
 	width: 108%;

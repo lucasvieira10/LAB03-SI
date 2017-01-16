@@ -33,11 +33,10 @@
 
             	<!-- Sub menu para as tarefas -->
             	<ul class="dropdown-menu">
-                  <!-- QUANDO EU CLICAR EM ALGUMA DESSAS TEREFAS
-                  VAI RESGATAR DO BD AS TAREFAS E ATUALIZAR A PAGINA COM ELAS -->
 
-                  <!-- AQUI VAI TER UM NG-REPEAT -->
-                  <li ng-repeat="agenda in agendas"><a href="#" ng-click="carregarTarefas(agenda.id)">{{agenda.nome}}</a></li>
+                  <li ng-repeat="agenda in agendas">
+                    <a href="#" ng-click="carregarDadosDaAgendaAtual(agenda)">{{agenda.nome}}</a>
+                  </li>
 
                   <li class="divider"></li>
                   <li><a href="#">Ver detalhes</a></li> 
@@ -52,7 +51,7 @@
 
               <ul class="dropdown-menu">
                  
-                  <li id="criar_agenda"><a href="#openModal">Criar nova agenda</a></li>
+                  <li id="criar_agenda"><a href="#openModalCriarAgenda">Criar nova agenda</a></li>
                   <li class="divider"></li>
                   <li><a href="#" ng-click="excluirAgendas()">Excluir agendas</a></li>
                 </ul>
@@ -104,7 +103,7 @@
       </div>
 
       <!-- Botao para adicionar uma nova tarefa -->
-      <button id="button_addTarefa" type="button" class="btn btn-success" ng-click="salvarTarefa(tarefa)" 
+      <button id="button_addTarefa" type="button" class="btn btn-success" ng-click="salvarTarefa(tarefa)"
         ng-disabled="tarefaForm.$invalid">
         <span class="glyphicon glyphicon-plus"> Adicionar</span>
       </button>
@@ -144,7 +143,7 @@
                   <input type="checkbox" ng-model="tarefa.selecionada" ng-click="atualizarStatusDasTarefas()">
                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                   
-                  <span id="nomeTarefa">{{tarefa.nome}}</span>
+                  <a href="#openModalAlterarTarefa"><span id="nomeTarefa">{{tarefa.nome}}</span></a>
                   
                   <div>
                     <span id="prioridadeTarefa">{{'Prioridade: ' + tarefa.prioridade}}</span>
@@ -164,14 +163,14 @@
           <span class="glyphicon glyphicon-ok"> Salvar</span>
         </button>
         
-        <button id="btn_delete" type="button" class="btn btn-danger">
+        <button ng-click="removerAgenda()" id="btn_delete" type="button" class="btn btn-danger">
           <span class="glyphicon glyphicon-remove"> Excluir</span>
         </button>
       
       </div>
 
        <!-- Modal para criar a Agenda -->
-      <div id="openModal" class="modalDialog">
+      <div id="openModalCriarAgenda" class="modalDialog">
         <div>
           <a href="#close" title="Close" class="close">X</a>
           <div id="modal_criar_agenda"><span>Criar Agenda</span></div>
@@ -188,13 +187,32 @@
               <span class="glyphicon glyphicon-remove"> Cancelar</span>
             </button>
           </a>
-          
         </div>
       </div>
-<!-- 
-      {{agendas}}
-      {{tarefas}}
- -->
+
+      <!-- Modal para atualizar tarefa -->
+      <div id="openModalAlterarTarefa" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close">X</a>
+          <div id="modal_alterar_tarefa"><span>Alterar Tarefa</span></div>
+          <input type="text" class="form-control" placeholder="Alterar o nome da tarefa..."/>
+
+          <!--ng-model: tarefa.comentario-->
+          <textarea name="comment" placeholder="Escreva um comentário..." class="form-control"></textarea>
+
+          <a href="#close">
+            <button type="button" class="btn btn-success" id="btn_alterarTarefa">
+              <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
+            </button>
+          </a>
+
+          <a href="#close">
+            <button type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"> Cancelar</span>
+            </button>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Rodape da pagina -->

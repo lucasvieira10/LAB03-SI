@@ -25,10 +25,6 @@ public class AgendaController {
     private static final String AGENDA_ID = "route_id";
     private static final String TASK_ROUTE_ID = "/{task_id}";
     private static final String TASK_ID = "task_id";
-    private static final String SUCCESSFULLY_DELETED = "Agenda successfully deleted!";
-    private static final String NOT_DELETED = "Nonexistent Agenda!";
-    private static final String ADDED_TASK = "Added task!";
-    private static final String UPDATE_AGENDA = "Agenda Updated!";
 
     @Autowired
     private AgendaRepository agendaRepository;
@@ -124,8 +120,8 @@ public class AgendaController {
                 consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Task> updateTask(@PathVariable(AGENDA_ID) String agendaID,
-                                             @PathVariable(TASK_ID) String taskId,
-                                             @RequestBody Task task) {
+                                           @PathVariable(TASK_ID) String taskId,
+                                           @RequestBody Task task) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
@@ -148,7 +144,7 @@ public class AgendaController {
     @CrossOrigin
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID)
     public ResponseEntity<Void> deleteTask(@PathVariable(AGENDA_ID) String agendaID,
-                                             @PathVariable(TASK_ID) String taskId) {
+                                           @PathVariable(TASK_ID) String taskId) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
@@ -160,6 +156,18 @@ public class AgendaController {
                 break;
             }
         }
+
+        agendaRepository.save(agenda);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
+    public ResponseEntity<Void> removeTasks(@PathVariable(AGENDA_ID) String agendaID) {
+        Agenda agenda = agendaRepository.findById(agendaID);
+
+        agenda.obterTarefas().clear();
 
         agendaRepository.save(agenda);
 
