@@ -97,7 +97,7 @@ public class AgendaController {
     public List<Task> getTasks(@PathVariable(AGENDA_ID) String id) {
         Agenda agenda = agendaRepository.findById(id);
 
-        return agenda.obterTarefas();
+        return agenda.getTarefas();
     }
 
     @CrossOrigin
@@ -125,13 +125,14 @@ public class AgendaController {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
-        List<Task> tasks = agenda.obterTarefas();
+        List<Task> tasks = agenda.getTarefas();
 
         for (Task t : tasks) {
             if (t.getId().equals(taskId)) {
                 t.setNome(task.getNome());
                 t.setPrioridade(task.getPrioridade());
                 t.setSelecionada(task.isSelecionada());
+                t.setComentario(task.getComentario());
                 break;
             }
         }
@@ -148,7 +149,7 @@ public class AgendaController {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
-        List<Task> tasks = agenda.obterTarefas();
+        List<Task> tasks = agenda.getTarefas();
 
         for (Task t : tasks) {
             if (t.getId().equals(taskId)) {
@@ -167,7 +168,7 @@ public class AgendaController {
     public ResponseEntity<Void> removeTasks(@PathVariable(AGENDA_ID) String agendaID) {
         Agenda agenda = agendaRepository.findById(agendaID);
 
-        agenda.obterTarefas().clear();
+        agenda.getTarefas().clear();
 
         agendaRepository.save(agenda);
 

@@ -70,7 +70,6 @@ div#alert {
 	padding: 2px;
 	margin-top: -10px;
 	margin-bottom: 10px;
-
 }
 
 div#alert a {
@@ -101,21 +100,18 @@ div#list_tarefa span {
 }
 
 div#list_tarefa button {
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-right:1px;
-	padding-left: 1px;
+	padding: 4px 1px 4px 1px;
 	float: right;
 	border-radius: 20px;
+}
+
+div#list_tarefa a {
+	color: black;
 }
 
 #prioridadeTarefa {
 	font-size: 75%;
 	color: #215FDC;
-}
-
-.selecionada {
-	/*color: #008604;*/
 }
 
 button#button_cleanTarefas {
@@ -128,18 +124,18 @@ button#button_addTarefa {
 	width: 15%;
 }
  
-button#btn_save {
-	border-radius: 20px;
-	width: 15%;
-	margin-top: 45px;
-	margin-bottom: -80px;
-}
+/*button#btn_save {*/
+	/*border-radius: 20px;*/
+	/*width: 15%;*/
+	/*margin-top: 45px;*/
+	/*margin-bottom: -80px;*/
+/*}*/
 
 button#btn_delete {
-	border-radius: 20px;
-	width: 15%;
-	margin-top: 45px;
-	margin-bottom: -80px;
+	border-radius: 30px;
+	width: 30%;
+	margin-top: 60px;
+	margin-bottom: -75px;
 }
 
 footer#rodape {
@@ -152,6 +148,10 @@ footer#rodape a {
 	color: #215FDC;
 	text-decoration: none;
 }
+
+/*
+checkbox da tarefa
+*/
 
 .checkbox {
     margin-left: -30px;

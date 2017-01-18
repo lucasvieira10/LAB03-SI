@@ -14,14 +14,16 @@ public class Task {
     private String nome;
     private int prioridade;
     private boolean selecionada;
+    private String comentario;
 
     public Task() {}
 
-    public Task(String id, String nome, int prioridade, boolean selecionada) {
+    public Task(String id, String nome, int prioridade, boolean selecionada, String comentario) {
         this.id = id;
         this.nome = nome;
         this.prioridade = prioridade;
         this.selecionada = selecionada;
+        this.comentario = comentario;
     }
 
     public String getId() {
@@ -54,6 +56,14 @@ public class Task {
 
     public void setSelecionada(boolean selecionada) {
         this.selecionada = selecionada;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     @Override

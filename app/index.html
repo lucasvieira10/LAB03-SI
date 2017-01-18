@@ -68,7 +68,7 @@
       </nav>
 
     <section id="conteudo_principal">
-      <h1>Agenda de Tarefas</h1>
+      <h1>{{agendaAtual.nome}}</h1>
 
       <!-- Entrada para o nome da tarefa -->
       <div id="input_tarefa" class="form-group">
@@ -140,11 +140,15 @@
             <li class="list-group-item" ng-repeat="tarefa in tarefas">
               <div class="checkbox">
                 <label ng-class="{selecionada: tarefa.selecionada}">
-                  <input type="checkbox" ng-model="tarefa.selecionada" ng-click="atualizarStatusDasTarefas()">
+                  <input type="checkbox" ng-model="tarefa.selecionada"
+                         ng-click="atualizarStatusDasTarefas(); atualizarTarefaAtual(tarefa)">
+
                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                   
-                  <a href="#openModalAlterarTarefa"><span id="nomeTarefa">{{tarefa.nome}}</span></a>
-                  
+                  <a href="#openModalAlterarTarefa" ng-click="atualizarTarefaAtual(tarefa)">
+                    <span id="nomeTarefa">{{tarefa.nome}}</span>
+                  </a>
+
                   <div>
                     <span id="prioridadeTarefa">{{'Prioridade: ' + tarefa.prioridade}}</span>
                   </div>
@@ -159,9 +163,9 @@
             </li>
         </div>
 
-        <button ng-click="atualizarAgenda()" id="btn_save" type="button" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"> Salvar</span>
-        </button>
+        <!--<button ng-click="atualizarAgenda()" id="btn_save" type="button" class="btn btn-success">-->
+          <!--<span class="glyphicon glyphicon-ok"> Salvar</span>-->
+        <!--</button>-->
         
         <button ng-click="removerAgenda()" id="btn_delete" type="button" class="btn btn-danger">
           <span class="glyphicon glyphicon-remove"> Excluir</span>
@@ -195,13 +199,13 @@
         <div>
           <a href="#close" title="Close" class="close">X</a>
           <div id="modal_alterar_tarefa"><span>Alterar Tarefa</span></div>
-          <input type="text" class="form-control" placeholder="Alterar o nome da tarefa..."/>
+          <input ng-model="tarefaAtual.nome" type="text" class="form-control" placeholder="Alterar o nome da tarefa..."/>
 
-          <!--ng-model: tarefa.comentario-->
-          <textarea name="comment" placeholder="Escreva um comentário..." class="form-control"></textarea>
+          <textarea ng-model="tarefaAtual.comentario" name="comment" placeholder="Escreva um comentário..."
+                    class="form-control"></textarea>
 
           <a href="#close">
-            <button type="button" class="btn btn-success" id="btn_alterarTarefa">
+            <button ng-click="atualizarTarefa()" type="button" class="btn btn-success" id="btn_alterarTarefa">
               <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
             </button>
           </a>

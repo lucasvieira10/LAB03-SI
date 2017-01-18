@@ -38,10 +38,6 @@ public class Agenda {
         this.tarefas.add(task);
     }
 
-    public List<Task> obterTarefas() {
-        return tarefas;
-    }
-
     public String getId() {
         return id;
     }
@@ -72,6 +68,14 @@ public class Agenda {
 
     public void setTarefasJaConcluidas(int tarefasJaConcluidas) {
         this.tarefasJaConcluidas = tarefasJaConcluidas;
+    }
+
+    public List<Task> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Task> tarefas) {
+        this.tarefas = tarefas;
     }
 
     @Override
