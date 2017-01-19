@@ -81,7 +81,7 @@
 
           <div>
             <select ng-model="tarefa.prioridade" ng-options="prioridade for prioridade in prioridades" ng-required="true"
-              name="prioridade">
+              name="prioridade" class="form-control">
               <option value="">Selecione uma prioridade</option>
             </select>
           </div>
@@ -150,7 +150,8 @@
                   </a>
 
                   <div>
-                    <span id="prioridadeTarefa">{{'Prioridade: ' + tarefa.prioridade}}</span>
+                    <span id="prioridadeTarefa" ng-style="{'color': corDasPrioridades[tarefa.prioridade - 1]}">
+                      {{'Prioridade: ' + tarefa.prioridade}}</span>
                   </div>
 
                 </label>
@@ -204,6 +205,11 @@
           <textarea ng-model="tarefaAtual.comentario" name="comment" placeholder="Escreva um comentário..."
                     class="form-control"></textarea>
 
+          <select ng-model="tarefaAtual.prioridade" ng-options="prioridade for prioridade in prioridades" ng-required="true"
+                  name="prioridade" class="form-control">
+            <option value="">Selecione uma prioridade</option>
+          </select>
+
           <a href="#close">
             <button ng-click="atualizarTarefa()" type="button" class="btn btn-success" id="btn_alterarTarefa">
               <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
@@ -212,7 +218,7 @@
 
           <a href="#close">
             <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove"> Cancelar</span>
+              <span class="glyphicon glyphicon-remove" ng-click="resetarMudancasNaoSalvas()"> Cancelar</span>
             </button>
           </a>
         </div>

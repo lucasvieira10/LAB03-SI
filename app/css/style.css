@@ -52,8 +52,8 @@ div#interface h1 {
 div#input_tarefa div input {
 	height: 35px;
 	width: 100%;
-	font-size: 120%;
-	margin-right: 414px;	
+	font-size: 118%;
+	margin-right: 390px;
 }
 
 div#input_tarefa div select {
@@ -111,7 +111,6 @@ div#list_tarefa a {
 
 #prioridadeTarefa {
 	font-size: 75%;
-	color: #215FDC;
 }
 
 button#button_cleanTarefas {
@@ -240,6 +239,15 @@ modal para criar agenda
 	margin-left: -13px;
 	margin-top: 10px;
 	resize: none;
+}
+
+#openModalAlterarTarefa select {
+	margin-top: 10px;
+	height: 35px;
+	width: 107%;
+	margin-left: -13px;
+	background-color: white;
+	border-radius: 6px;
 }
 
 .modalDialog input {

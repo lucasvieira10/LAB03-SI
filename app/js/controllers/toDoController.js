@@ -10,6 +10,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.tarefas = [];
 
 	self.prioridades = [1, 2, 3, 4];
+	self.corDasPrioridades = ["Red", "Blue", "DarkOrange", "Green"];
 
 	self.agendaAtual = null;
 	self.tarefaAtual = null;
@@ -92,6 +93,15 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 
         atualizarAgenda();
 	};
+
+	self.resetarMudancasNaoSalvas = function () {
+		carregarTarefas();
+
+		// aqui eu deve chamar um metodo carregarTarefa()
+		// que vai carregar somente aquela tarefa com o determinado id;
+		// e setar ela na self.tarefas...
+		console.log(self.tarefas);
+    };
 
     var carregarAgendas = function () {
         agendaAPI.obterAgendas().then(function (agendas) {

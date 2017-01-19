@@ -31,7 +31,6 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		return promessa.promise;
 	};
 
-
 	var _salvarTarefa = function(tarefa, agendaID) {
 		var url = agendasUrl + "/" + agendaID + "/tasks";
 		return $http.post(url, tarefa);
