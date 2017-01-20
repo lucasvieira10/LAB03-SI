@@ -103,6 +103,18 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 		console.log(self.tarefas);
     };
 
+    self.atualizarTarefa = function() {
+        agendaAPI.atualizarTarefa(self.tarefaAtual, self.agendaAtual.id);
+    };
+
+    self.select = function(item) {
+        $scope.selected = item;
+    };
+
+    self.isActive = function(item) {
+        return $scope.selected === item;
+    };
+
     var carregarAgendas = function () {
         agendaAPI.obterAgendas().then(function (agendas) {
             self.agendas = agendas;
@@ -121,10 +133,6 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     	self.agendaAtual.tarefasJaConcluidas = self.tarefasJaConcluidas;
 
         agendaAPI.atualizarAgenda(self.agendaAtual, self.agendaAtual.id).then(self.atualizarTarefa);
-    };
-
-    self.atualizarTarefa = function() {
-    	agendaAPI.atualizarTarefa(self.tarefaAtual, self.agendaAtual.id);
     };
 
     var carregarTarefas = function () {

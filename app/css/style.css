@@ -315,3 +315,36 @@ modal para criar agenda
 }
 
 .close:hover { background: #215FDC; }
+
+/* Paginacao */
+
+ul.pagination {
+	display: inline-block;
+	padding: 0;
+	margin-top: 50px;
+	margin-bottom: -90px;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 5px;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+.btn-circle {
+	border-radius: 50%;
+	padding: 0.1em;
+	width:1.8em;
+}
