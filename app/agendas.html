@@ -21,10 +21,10 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">Agenda de Tarefas</a>
+            <a class="navbar-brand" href="agendas.html">Agenda de Tarefas</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Principal</a></li>
+            <li class="active"><a href="agendas.html">Principal</a></li>
 
             <li class="dropdown"><a href="#" target="_blank" 
             	class="dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +39,7 @@
                   <!--</li>-->
 
                   <!--<li class="divider"></li>-->
-                  <li><a href="#">Ver detalhes</a></li> 
+                  <li><a href="#openModalVerDetalhes" ng-click="calcularTotalDeTarefasACumprir()">Ver detalhes</a></li>
 
                 </ul>
             </li>
@@ -66,7 +66,7 @@
           </ul>
         </div>
       </nav>
-
+      
     <section id="conteudo_principal">
       <h1>{{agendaAtual.nome}}</h1>
 
@@ -216,6 +216,12 @@
             <option value="">Selecione uma prioridade</option>
           </select>
 
+          <div class="strike">
+            <span style="font-size: 17px">Categoria da Tarefa</span>
+          </div>
+
+          <input ng-model="tarefaAtual.categoria" type="text" class="form-control" placeholder="Escreva a categoria..."/>
+
           <a href="#close">
             <button ng-click="atualizarTarefa()" type="button" class="btn btn-success" id="btn_alterarTarefa">
               <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
@@ -228,6 +234,16 @@
             </button>
           </a>
         </div>
+      </div>
+
+      <!-- Modal para ver os detalehs das tarefas -->
+      <div id="openModalVerDetalhes" class="modalDialog">
+          <div>
+              <a href="#close" title="Close" class="close">X</a>
+              <div id="modal_ver_detalhes"><span>Ver Detalhes</span></div>
+
+              <p>Total de tarefas para cumprir: {{tarefasParaCumprirEmTodasAgendas}}</p>
+          </div>
       </div>
     </section>
 
@@ -242,8 +258,6 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/controllers/toDoController.js"></script>
     <script src="js/services/agendaAPIService.js"></script>
-    <script src="js/models/agenda.js"></script>
-    <script src="js/models/tarefa.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

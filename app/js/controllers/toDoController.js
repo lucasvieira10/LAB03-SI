@@ -15,6 +15,8 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.agendaAtual = null;
 	self.tarefaAtual = null;
 
+	self.tarefasParaCumprirEmTodasAgendas = 0;
+
 	self.carregarDadosDaAgendaAtual = function (agenda) {
 		agendaAPI.obterTarefas(agenda.id).then(function (tarefas) {
 			self.tarefas = tarefas;
@@ -28,7 +30,14 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     };
 
 	self.salvarAgenda = function(nome) {
-		agendaAPI.salvarAgenda(new Agenda(nome, 0, 0, [])).then(carregarAgendas);
+		var agenda = {
+			"nome": nome,
+			"tarefasParaCumprir": 0,
+			"tarefasJaConcluidas": 0,
+			"tarefas": []
+		};
+
+		agendaAPI.salvarAgenda(agenda).then(carregarAgendas);
 		delete self.agenda;
 	};
 
@@ -69,6 +78,18 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.estaVazia = function(tarefas) {
 		return (tarefas.length > 0);
 	};
+
+	self.calcularTotalDeTarefasACumprir = function () {
+	    self.tarefasParaCumprirEmTodasAgendas = 0;
+
+        agendaAPI.obterTarefasDasAgendas().then(function (tarefas) {
+            for (var i in tarefas) {
+                if (tarefas[i].selecionada == false) {
+                    self.tarefasParaCumprirEmTodasAgendas += 1;
+                }
+            }
+        });
+    };
 
 	self.limparTarefas = function() {
         self.tarefasParaCumprir = 0;

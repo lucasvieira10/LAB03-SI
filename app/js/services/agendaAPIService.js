@@ -66,6 +66,21 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		return $http.delete(url);
     };
 
+	var _obterTarefasDasAgendas = function () {
+		var url = agendasUrl + "/tasks";
+
+        var promessa = $q.defer();
+
+        $http.get(url)
+            .then(function (resultado) {
+                var tarefas = resultado.data;
+
+                promessa.resolve(tarefas);
+            });
+
+        return promessa.promise;
+    };
+
 	return {
 		obterAgendas: _obterAgendas,
 		salvarAgenda: _salvarAgenda,
@@ -76,6 +91,7 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		atualizarAgenda: _atualizarAgenda,
 		atualizarTarefa: _atualizarTarefa,
 		removerAgenda: _removerAgenda,
-		removerTarefas: _removerTarefas
+		removerTarefas: _removerTarefas,
+        obterTarefasDasAgendas: _obterTarefasDasAgendas
 	};
 });

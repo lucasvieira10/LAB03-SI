@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,6 +94,18 @@ public class AgendaController {
      */
 
     @CrossOrigin
+    @GetMapping(value = AGENDA_ROUTE + TASK_ROUTE)
+    public List<Task> getAllTasks() {
+        List<Task> tasks = new ArrayList<>();
+
+        for (Agenda agenda : agendaRepository.findAll()) {
+            tasks.addAll(agenda.getTarefas());
+        }
+
+        return tasks;
+    }
+
+    @CrossOrigin
     @GetMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
     public List<Task> getTasks(@PathVariable(AGENDA_ID) String id) {
         Agenda agenda = agendaRepository.findById(id);
@@ -133,6 +146,7 @@ public class AgendaController {
                 t.setPrioridade(task.getPrioridade());
                 t.setSelecionada(task.isSelecionada());
                 t.setComentario(task.getComentario());
+                t.setCategoria(task.getCategoria());
                 break;
             }
         }

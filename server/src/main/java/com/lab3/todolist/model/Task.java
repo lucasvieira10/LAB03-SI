@@ -15,15 +15,17 @@ public class Task {
     private int prioridade;
     private boolean selecionada;
     private String comentario;
+    private String categoria;
 
     public Task() {}
 
-    public Task(String id, String nome, int prioridade, boolean selecionada, String comentario) {
+    public Task(String id, String nome, int prioridade, boolean selecionada, String comentario, String categoria) {
         this.id = id;
         this.nome = nome;
         this.prioridade = prioridade;
         this.selecionada = selecionada;
         this.comentario = comentario;
+        this.categoria = categoria;
     }
 
     public String getId() {
@@ -66,6 +68,14 @@ public class Task {
         this.comentario = comentario;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,6 +99,8 @@ public class Task {
                 ", nome='" + nome + '\'' +
                 ", prioridade=" + prioridade +
                 ", selecionada=" + selecionada +
+                ", comentario='" + comentario + '\'' +
+                ", categoria='" + categoria + '\'' +
                 '}';
     }
 }
