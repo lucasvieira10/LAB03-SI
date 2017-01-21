@@ -136,10 +136,19 @@ button#button_addTarefa {
 /*}*/
 
 button#btn_delete {
+	padding: 1px;
 	border-radius: 30px;
-	width: 30%;
-	margin-top: 60px;
-	margin-bottom: -75px;
+	width: 100%;
+	margin-top: 6px;
+	background-color: white;
+	border-color:  black;
+	color: black;
+}
+
+button#btn_delete:hover {
+	background-color: #bf201c;
+	color: white;
+	border-color:  #bf201c;
 }
 
 footer#rodape {

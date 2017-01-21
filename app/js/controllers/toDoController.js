@@ -16,6 +16,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.tarefaAtual = null;
 
 	self.tarefasParaCumprirEmTodasAgendas = 0;
+	self.agendaFoiSelecionada = false;
 
 	self.carregarDadosDaAgendaAtual = function (agenda) {
 		agendaAPI.obterTarefas(agenda.id).then(function (tarefas) {
@@ -129,6 +130,8 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     };
 
     self.select = function(item) {
+    	self.agendaFoiSelecionada = true;
+
         $scope.selected = item;
     };
 
