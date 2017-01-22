@@ -46,6 +46,10 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 		agendaAPI.removerAgenda(self.agendaAtual.id).then(carregarAgendas);
 
 		self.tarefas = [];
+
+		// self.agendaAtual = self.agendas[0];
+
+		// self.agendaFoiSelecionada = false;
 	};
 
 	self.excluirAgendas = function () {
@@ -53,16 +57,16 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	};
 
 	self.salvarTarefa = function(tarefa) {
-		tarefa.id = Date.now();
-		agendaAPI.salvarTarefa(tarefa, self.agendaAtual.id).then(carregarTarefas);
+        tarefa.id = Date.now();
+        agendaAPI.salvarTarefa(tarefa, self.agendaAtual.id).then(carregarTarefas);
 
-		self.tarefasParaCumprir++;
-		self.tarefaAtual = tarefa;
+        self.tarefasParaCumprir++;
+        self.tarefaAtual = tarefa;
 
-		delete self.tarefa;
-		self.tarefaForm.$setPristine();
+        delete self.tarefa;
+        self.tarefaForm.$setPristine();
 
-		atualizarAgenda();
+        atualizarAgenda();
 	};
 
 	self.removerTarefa = function(tarefa) {

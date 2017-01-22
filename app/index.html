@@ -21,15 +21,15 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="agendas.html">Agenda de Tarefas</a>
+            <a class="navbar-brand" href="index.html">Agenda de Tarefas</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="agendas.html">Principal</a></li>
+            <li class="active"><a href="index.html">Principal</a></li>
 
             <li class="dropdown"><a href="#" target="_blank" 
             	class="dropdown-toggle" data-toggle="dropdown">
             	
-            	Agendas <b class="caret"></b></a>
+            	Tarefas <b class="caret"></b></a>
 
             	<!-- Sub menu para as tarefas -->
             	<ul class="dropdown-menu">
@@ -39,6 +39,8 @@
                   <!--</li>-->
 
                   <!--<li class="divider"></li>-->
+                  <li><a href="#">Filtar tarefas</a></li>
+                  <li class="divider"></li>
                   <li><a href="#openModalVerDetalhes" ng-click="calcularTotalDeTarefasACumprir()">Ver detalhes</a></li>
 
                 </ul>
@@ -47,7 +49,7 @@
             <li class="dropdown"><a href="#" target="_blank" 
               class="dropdown-toggle" data-toggle="dropdown">
               
-              Editar <b class="caret"></b></a>
+              Agendas <b class="caret"></b></a>
 
               <ul class="dropdown-menu">
                  
@@ -69,65 +71,29 @@
 
 
 
+      <!--Caso nao tenha nenhuma agenda selecionada -->
 
+      <section ng-show="!agendaFoiSelecionada" id="conteudo_principal">
+        <h1>Seja Bem-Vindo!</h1>
 
-    <!--Caso nao tenha nenhuma agenda selecionada -->
+        <img src="pictures/tarefas.jpg" style="height: 407px"><br>
 
-    <section ng-if="!agendaFoiSelecionada" id="conteudo_principal">
-      <h1>Seja Bem-Vindo!</h1>
-
-      <img src="pictures/tarefas.jpg" style="height: 407px"><br>
-      
-      <ul class="pagination">
-        <li><a href="#">«</a></li>
-        <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
-          <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
-            {{agendas.indexOf(agenda) + 1}}
-          </a>
-        </li>
-        <li><a href="#">»</a></li>
-      </ul>
-
-      <!-- Modal para criar a Agenda -->
-
-      <div id="openModalCriarAgenda" class="modalDialog">
-        <div>
-          <a href="#close" title="Close" class="close">X</a>
-          <div id="modal_criar_agenda"><span>Criar Agenda</span></div>
-          <input ng-model="agenda.nome" type="text" class="form-control" placeholder="Escreva um nome..."/>
-
-          <a href="#close">
-            <button ng-click="salvarAgenda(agenda.nome)" type="button" class="btn btn-success" id="btn_salvarAgenda">
-              <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
-            </button>
-          </a>
-
-          <a href="#close">
-            <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove"> Cancelar</span>
-            </button>
-          </a>
-        </div>
-      </div>
-
-      <!-- Modal para ver os detalhes das tarefas -->
-      <div id="openModalVerDetalhes" class="modalDialog">
-        <div>
-          <a href="#close" title="Close" class="close">X</a>
-          <div id="modal_ver_detalhes"><span>Ver Detalhes</span></div>
-
-          <p>Total de tarefas para cumprir: {{tarefasParaCumprirEmTodasAgendas}}</p>
-        </div>
-      </div>
-    </section>
-
-
+        <ul class="pagination">
+          <li><a href="#">«</a></li>
+          <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
+            <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
+              {{agendas.indexOf(agenda) + 1}}
+            </a>
+          </li>
+          <li><a href="#">»</a></li>
+        </ul>
+      </section>
 
 
 
       <!--Caso tenha alguma agenda selecionada -->
 
-      <section ng-if="agendaFoiSelecionada" id="conteudo_principal">
+      <section ng-show="agendaFoiSelecionada" id="conteudo_principal">
       <h1>{{agendaAtual.nome}}</h1>
 
       <!-- Entrada para o nome da tarefa -->
@@ -237,10 +203,10 @@
           </li>
           <li><a href="#">»</a></li>
         </ul>
-
       </div>
+    </section>
 
-       <!-- Modal para criar a Agenda -->
+      <!-- Modal para criar a Agenda -->
       <div id="openModalCriarAgenda" class="modalDialog">
         <div>
           <a href="#close" title="Close" class="close">X</a>
@@ -298,14 +264,13 @@
 
       <!-- Modal para ver os detalhes das tarefas -->
       <div id="openModalVerDetalhes" class="modalDialog">
-          <div>
-              <a href="#close" title="Close" class="close">X</a>
-              <div id="modal_ver_detalhes"><span>Ver Detalhes</span></div>
+        <div>
+          <a href="#close" title="Close" class="close">X</a>
+          <div id="modal_ver_detalhes"><span>Ver Detalhes</span></div>
 
-              <p>Total de tarefas para cumprir: {{tarefasParaCumprirEmTodasAgendas}}</p>
-          </div>
+          <p>Total de tarefas para cumprir: {{tarefasParaCumprirEmTodasAgendas}}</p>
+        </div>
       </div>
-    </section>
 
     <!-- Rodape da pagina -->
     <footer id="rodape">
