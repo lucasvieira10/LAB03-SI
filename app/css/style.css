@@ -93,6 +93,12 @@ div#resultado h2 {
 	padding-top: 9px;
 }
 
+div#resultado input#input_filtro {
+	height: 35px;
+	font-size: 118%;
+	margin-bottom: 10px;
+}
+
 div#list_tarefa {
 	text-align: left;
 	font-size: 130%;
@@ -259,6 +265,36 @@ modal para criar agenda
 	padding: 1px;
 }
 
+#modal_filtar_prioridade {
+	background-color: #161616;
+	color: white;
+	font-size: 200%;
+	border-radius: 5px;
+	padding-bottom: 0px;
+	margin-top: -20px;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-bottom: 1px;
+	padding: 1px;
+}
+
+#openModalFiltrarPrioridade input {
+	margin-bottom: 10px;
+}
+
+#filter_types {
+	width: 108%;
+	margin-left: -15px;
+	margin-top: 15px;
+}
+
+#openModalFiltrarPrioridade li {
+	width: 107%;
+	margin-left: -13px;
+	text-align: left;
+	font-size: 120%;
+}
+
 #openModalVerDetalhes p {
 	margin-top: 15px;
 	font-size: 130%;
@@ -290,6 +326,12 @@ modal para criar agenda
 .modalDialog button {
 	margin-top: 15px;
 	border-radius: 20px;
+}
+
+.modal-body {
+	max-height: calc(100vh - 210px);
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .modalDialog a {
@@ -345,7 +387,10 @@ modal para criar agenda
 	box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { background: #215FDC; }
+.close:hover {
+	background: #bf201c;
+	color: white;
+}
 
 /* Paginacao */
 

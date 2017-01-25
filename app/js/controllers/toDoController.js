@@ -1,4 +1,11 @@
-angular.module("toDoList", []);
+var app = angular.module("toDoList", []);
+
+app.filter("slice", function(){
+    return function(input, number, disable){
+        if (disable) return input;
+
+    }
+});
 
 angular.module("toDoList").controller("toDoListController", function($scope, agendaAPI) {
 	var self = $scope;

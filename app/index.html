@@ -38,9 +38,8 @@
                     <!--<a href="#" ng-click="carregarDadosDaAgendaAtual(agenda)">{{agenda.nome}}</a>-->
                   <!--</li>-->
 
+                  <!--<li><a tabindex="0">oi</a></li>-->
                   <!--<li class="divider"></li>-->
-                  <li><a href="#">Filtar tarefas</a></li>
-                  <li class="divider"></li>
                   <li><a href="#openModalVerDetalhes" ng-click="calcularTotalDeTarefasACumprir()">Ver detalhes</a></li>
 
                 </ul>
@@ -59,11 +58,13 @@
                 </ul>
             </li>
 
+            <li><a href="#openModalFiltrarPrioridade">Filtrar</a></li>
+
             <li><a href="https://github.com/lucasvieira10" target="_blank">Sobre</a></li>
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <!--<li><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
             <li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
@@ -80,7 +81,7 @@
 
         <ul class="pagination">
           <li><a href="#">«</a></li>
-          <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
+          <li ng-repeat="agenda in agendas | orderBy: 'nome'" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
             <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
               {{agendas.indexOf(agenda) + 1}}
             </a>
@@ -165,9 +166,30 @@
       <!-- Div onde estara listada todas as minhas tarefas -->
       <div id="resultado">
         <h2>Tarefas</h2>
-          <div id="list_tarefa">
 
-            <li class="list-group-item" ng-repeat="tarefa in tarefas">
+        <div ng-show="tarefas.length > 0" class="form-group">
+          <select ng-model="orderType" class="form-control" id="order_type">
+            <option value="">Selecione um tipo de ordenação</option>
+            <option value="prioridade">Prioridade</option>
+            <option value="nome">Nome</option>
+          </select>
+        </div>
+
+        <!--<input id="input_filtro" type="text" ng-model="criterioDeBusca.prioridade" class="form-control"-->
+               <!--placeholder="prioridade..."/>-->
+
+        <!--<input type="text" ng-model="criterioDeBusca.categoria" class="form-control"-->
+               <!--placeholder="categoria..."/>-->
+        <!--<p>Filtered Reverse Input: {{ criterioDeBusca | reversetext }}</p>-->
+
+        <div id="list_tarefa">
+
+          <!--|
+                filter:{prioridade: criterioDeBusca.prioridade, categoria:criterioDeBusca.categoria} |
+                orderBy: 'prioridade'"-->
+
+            <li class="list-group-item" ng-repeat="tarefa in tarefas | orderBy: orderType" >
+
               <div class="checkbox">
                 <label ng-class="{selecionada: tarefa.selecionada}">
                   <input type="checkbox" ng-model="tarefa.selecionada"
@@ -196,7 +218,7 @@
 
         <ul class="pagination">
           <li><a href="#">«</a></li>
-          <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
+          <li ng-repeat="agenda in agendas | orderBy: 'nome'" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
             <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
               {{agendas.indexOf(agenda) + 1}}
             </a>
@@ -271,6 +293,64 @@
           <p>Total de tarefas para cumprir: {{tarefasParaCumprirEmTodasAgendas}}</p>
         </div>
       </div>
+
+      <!-- Modal para filtar por prioridade-->
+      <div id="openModalFiltrarPrioridade" class="modalDialog">
+        <div class="modal-body">
+          <!--<a href="#close" title="Close" class="close">X</a>-->
+          <div id="modal_filtar_prioridade"><span>Filtro por Prioridade</span></div>
+
+          <div class="form-group">
+            <select ng-model="filterType" class="form-control" id="filter_types">
+              <option value="">Selecione um filtro</option>
+              <option value="prioridade">Prioridade</option>
+              <option value="categoria">Categoria</option>
+            </select>
+          </div>
+
+          <input ng-show="filterType === 'prioridade'" ng-model="busca.prioridade" type="number"
+                 min="1" max="4" class="form-control" placeholder="Digite a prioridade..."/>
+
+          <input ng-show="filterType === 'categoria'" ng-model="busca.categoria" type="text"
+                 class="form-control" placeholder="Digite uma categoria...">
+
+          <div class="strike">
+            <span style="font-size: 17px">Relatório</span>
+          </div>
+
+          <li ng-show="filterType === 'prioridade'" class="list-group-item" ng-repeat="tarefa in tarefas |
+              filter: {prioridade: busca.prioridade} |
+              orderBy: 'prioridade'" ng-if="!tarefa.selecionada">
+
+            <span id="nomeTarefa">{{tarefa.nome}}</span>
+
+            <div>
+                <span id="prioridadeTarefa" ng-style="{'color': corDasPrioridades[tarefa.prioridade - 1]}">
+                {{'Prioridade: ' + tarefa.prioridade}}</span>
+            </div>
+          </li>
+
+          <li ng-show="filterType === 'categoria'" class="list-group-item" ng-repeat="tarefa in tarefas |
+              filter: {categoria: busca.categoria} |
+              orderBy: 'prioridade'" ng-if="!tarefa.selecionada && tarefa.categoria !== null">
+
+            <span id="nomeTarefa">{{tarefa.nome}}</span>
+
+            <div>
+                <span id="prioridadeTarefa" ng-style="{'color': corDasPrioridades[tarefa.prioridade - 1]}">
+                {{'Prioridade: ' + tarefa.prioridade}}</span>
+            </div>
+          </li>
+
+          <a href="#close">
+            <button type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"> Fechar</span>
+            </button>
+          </a>
+
+        </div>
+      </div>
+
 
     <!-- Rodape da pagina -->
     <footer id="rodape">
