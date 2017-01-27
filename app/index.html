@@ -175,18 +175,7 @@
           </select>
         </div>
 
-        <!--<input id="input_filtro" type="text" ng-model="criterioDeBusca.prioridade" class="form-control"-->
-               <!--placeholder="prioridade..."/>-->
-
-        <!--<input type="text" ng-model="criterioDeBusca.categoria" class="form-control"-->
-               <!--placeholder="categoria..."/>-->
-        <!--<p>Filtered Reverse Input: {{ criterioDeBusca | reversetext }}</p>-->
-
         <div id="list_tarefa">
-
-          <!--|
-                filter:{prioridade: criterioDeBusca.prioridade, categoria:criterioDeBusca.categoria} |
-                orderBy: 'prioridade'"-->
 
             <li class="list-group-item" ng-repeat="tarefa in tarefas | orderBy: orderType" >
 
@@ -317,6 +306,24 @@
           <div class="strike">
             <span style="font-size: 17px">Relatório</span>
           </div>
+
+            <div class="relatorio" ng-show="filterType === 'prioridade'">
+                <div>
+                    {{"Total de tarefas: " + quantidadeDeTarefasDeUmaPrioridade(busca.prioridade)}}
+                </div>
+                <div>
+                    {{"Tarefas já concluidas: " + quantidadeDeTarefasFeitasDeUmaPrioridade(busca.prioridade)}}
+                </div>
+            </div>
+
+            <div class="relatorio" ng-show="filterType === 'categoria'">
+                <div>
+                    {{"Total de tarefas: " + quantidadeDeTarefasDeUmaCategoria(busca.categoria)}}
+                </div>
+                <div>
+                    {{"Tarefas já concluidas: " + quantidadeDeTarefasFeitasDeUmaCategoria(busca.categoria)}}
+                </div>
+            </div>
 
           <li ng-show="filterType === 'prioridade'" class="list-group-item" ng-repeat="tarefa in tarefas |
               filter: {prioridade: busca.prioridade} |

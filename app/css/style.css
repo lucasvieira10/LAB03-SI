@@ -99,6 +99,13 @@ div#resultado input#input_filtro {
 	margin-bottom: 10px;
 }
 
+#order_type {
+	height: 35px;
+	background-color: white;
+	border-radius: 6px;
+	color: #282828;
+}
+
 div#list_tarefa {
 	text-align: left;
 	font-size: 130%;
@@ -280,6 +287,12 @@ modal para criar agenda
 
 #openModalFiltrarPrioridade input {
 	margin-bottom: 10px;
+}
+
+.relatorio {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-size: 120%;
 }
 
 #filter_types {

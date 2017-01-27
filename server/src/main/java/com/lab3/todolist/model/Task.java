@@ -3,10 +3,10 @@ package com.lab3.todolist.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Created by lucas on 05/01/17.
+ * Created by Lucas L. Vieira.
  *
+ * This class represent a task.
  */
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Task {
 

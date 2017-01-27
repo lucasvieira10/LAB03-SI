@@ -1,11 +1,4 @@
-var app = angular.module("toDoList", []);
-
-app.filter("slice", function(){
-    return function(input, number, disable){
-        if (disable) return input;
-
-    }
-});
+angular.module("toDoList", []);
 
 angular.module("toDoList").controller("toDoListController", function($scope, agendaAPI) {
 	var self = $scope;
@@ -91,6 +84,56 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 		return (tarefas.length > 0);
 	};
 
+	self.quantidadeDeTarefasDeUmaPrioridade = function(prioridade) {
+		var quantidade = 0;
+
+		for (var i in self.tarefas) {
+			if (self.tarefas[i].prioridade === prioridade) {
+				quantidade++;
+			}
+		}
+
+		return quantidade;
+	};
+
+    self.quantidadeDeTarefasDeUmaCategoria = function(categoria) {
+        var quantidade = 0;
+
+        for (var i in self.tarefas) {
+            if (self.tarefas[i].categoria === categoria) {
+                quantidade++;
+            }
+        }
+
+        return quantidade;
+    };
+
+    self.quantidadeDeTarefasFeitasDeUmaPrioridade = function(prioridade) {
+        var quantidade = 0;
+
+        for (var i in self.tarefas) {
+            if (self.tarefas[i].prioridade === prioridade
+				&& self.tarefas[i].selecionada === true) {
+                quantidade++;
+            }
+        }
+
+        return quantidade;
+    };
+
+    self.quantidadeDeTarefasFeitasDeUmaCategoria = function(categoria) {
+        var quantidade = 0;
+
+        for (var i in self.tarefas) {
+            if (self.tarefas[i].categoria === categoria
+                && self.tarefas[i].selecionada === true) {
+                quantidade++;
+            }
+        }
+
+        return quantidade;
+    };
+
 	self.calcularTotalDeTarefasACumprir = function () {
 	    self.tarefasParaCumprirEmTodasAgendas = 0;
 
@@ -102,6 +145,8 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
             }
         });
     };
+
+
 
 	self.limparTarefas = function() {
         self.tarefasParaCumprir = 0;

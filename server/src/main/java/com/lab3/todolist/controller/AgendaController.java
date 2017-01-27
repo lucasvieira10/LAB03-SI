@@ -13,10 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lucas on 05/01/17.
- *
+ * Created by Lucas L. Vieira.
  */
-
 @RestController
 public class AgendaController {
 
@@ -31,16 +29,21 @@ public class AgendaController {
     private AgendaRepository agendaRepository;
 
     /**
-     * Agenda Methods.
+     * This method return all of agendas
+     *
+     * @return agendas
      */
-
-    @CrossOrigin
     @GetMapping(value = AGENDA_ROUTE)
     public List<Agenda> getAgendas() {
         return agendaRepository.findAll();
     }
 
-    @CrossOrigin
+    /**
+     * This method save a agenda
+     *
+     * @param agenda agenda for save
+     * @return agenda saved
+     */
     @PostMapping(value = AGENDA_ROUTE,
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -51,12 +54,20 @@ public class AgendaController {
         return new ResponseEntity<>(agenda, HttpStatus.CREATED);
     }
 
-    @CrossOrigin
+    /**
+     * This method edit a agenda
+     *
+     * @param id id of a agenda
+     * @param agenda agenda for edit
+     * @return agenda edited
+     */
     @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID,
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Agenda> updateAgenda(@PathVariable(AGENDA_ID) String id, @RequestBody Agenda agenda) {
+    public ResponseEntity<Agenda> updateAgenda(@PathVariable(AGENDA_ID) String id,
+                                               @RequestBody Agenda agenda) {
+
         Agenda searchAgenda = agendaRepository.findById(id);
 
         searchAgenda.setNome(agenda.getNome());
@@ -68,7 +79,12 @@ public class AgendaController {
         return new ResponseEntity<>(agenda, HttpStatus.OK);
     }
 
-    @CrossOrigin
+    /**
+     * This method remove a agenda
+     *
+     * @param id id of a agenda
+     * @return void
+     */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID)
     public ResponseEntity<Void> deleteAgenda(@PathVariable(AGENDA_ID) String id) {
         Agenda agenda = agendaRepository.findById(id);
@@ -81,7 +97,11 @@ public class AgendaController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @CrossOrigin
+    /**
+     * This method remove all of agendas
+     *
+     * @return void
+     */
     @DeleteMapping(value =  AGENDA_ROUTE)
     public ResponseEntity<Void> deleteAgendas() {
         agendaRepository.deleteAll();
@@ -90,10 +110,10 @@ public class AgendaController {
     }
 
     /**
-     * Task Methods.
+     * This method return all of tasks
+     *
+     * @return tasks
      */
-
-    @CrossOrigin
     @GetMapping(value = AGENDA_ROUTE + TASK_ROUTE)
     public List<Task> getAllTasks() {
         List<Task> tasks = new ArrayList<>();
@@ -105,7 +125,12 @@ public class AgendaController {
         return tasks;
     }
 
-    @CrossOrigin
+    /**
+     * This method return all of tasks in a agenda.
+     *
+     * @param id id of a agenda
+     * @return tasks
+     */
     @GetMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
     public List<Task> getTasks(@PathVariable(AGENDA_ID) String id) {
         Agenda agenda = agendaRepository.findById(id);
@@ -113,7 +138,13 @@ public class AgendaController {
         return agenda.getTarefas();
     }
 
-    @CrossOrigin
+    /**
+     * This method save a task
+     *
+     * @param id id of a task
+     * @param task task for save
+     * @return task saved
+     */
     @PostMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE,
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -127,7 +158,14 @@ public class AgendaController {
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
 
-    @CrossOrigin
+    /**
+     * This method edit a task
+     *
+     * @param agendaID id of an agenda that contains the task
+     * @param taskId id of a task
+     * @param task task for edit
+     * @return task edited
+     */
     @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID,
                 produces = MediaType.APPLICATION_JSON_VALUE,
                 consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -156,7 +194,13 @@ public class AgendaController {
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
-    @CrossOrigin
+    /**
+     * This method remove a task.
+     *
+     * @param agendaID id of an agenda that contains the task
+     * @param taskId id of a task
+     * @return void
+     */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID)
     public ResponseEntity<Void> deleteTask(@PathVariable(AGENDA_ID) String agendaID,
                                            @PathVariable(TASK_ID) String taskId) {
@@ -177,7 +221,12 @@ public class AgendaController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @CrossOrigin
+    /**
+     * This method remove all of tasks in an agenda.
+     *
+     * @param agendaID id of an agenda that contains the task
+     * @return void
+     */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
     public ResponseEntity<Void> removeTasks(@PathVariable(AGENDA_ID) String agendaID) {
         Agenda agenda = agendaRepository.findById(agendaID);

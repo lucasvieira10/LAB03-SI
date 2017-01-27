@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lucas on 10/01/17.
+ * Created by Lucas L. Vieira.
  *
+ * This class represent an agenda.
  */
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Agenda {
 

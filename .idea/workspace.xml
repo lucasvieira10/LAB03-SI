@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50736972-0d2c-4182-9a8d-fd87cb05bf7e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/style.css" afterPath="$PROJECT_DIR$/app/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/toDoController.js" afterPath="$PROJECT_DIR$/app/js/controllers/toDoController.js" />
@@ -34,12 +33,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state relative-caret-position="458">
+              <caret line="325" column="18" lean-forward="true" selection-start-line="325" selection-start-column="18" selection-end-line="325" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#10893#10899#0" expanded="true" />
+                <element signature="e#10341#10347#0" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -49,8 +48,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="286" column="20" lean-forward="false" selection-start-line="286" selection-start-column="20" selection-end-line="286" selection-end-column="20" />
+            <state relative-caret-position="278">
+              <caret line="293" column="23" lean-forward="false" selection-start-line="293" selection-start-column="23" selection-end-line="293" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -59,8 +58,8 @@
       <file leaf-file-name="toDoController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="513">
+              <caret line="123" column="48" lean-forward="false" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -69,7 +68,7 @@
       <file leaf-file-name="agendaAPIService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/services/agendaAPIService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
+            <state relative-caret-position="603">
               <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
               <folding />
             </state>
@@ -87,9 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Detalhes</find>
-      <find>salvarTare</find>
-      <find>form</find>
       <find>tarefaForm</find>
       <find>excluir</find>
       <find>agendaat</find>
@@ -101,7 +97,6 @@
       <find>atualizarDadosDaAgendaAtual</find>
       <find>ng-repe</find>
       <find>input</find>
-      <find>list_ta</find>
       <find>close</find>
       <find>&lt;a href=&quot;#&quot; ng-click=&quot;&quot;&gt;Prioridade&lt;/a&gt;&lt;/li&gt;</find>
       <find>modal</find>
@@ -117,6 +112,10 @@
       <find>button</find>
       <find>Tarefas</find>
       <find>select</find>
+      <find>relatori</find>
+      <find>list_ta</find>
+      <find>relat</find>
+      <find>filtrar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,8 +132,8 @@
         <option value="$PROJECT_DIR$/app/agendas.html" />
         <option value="$PROJECT_DIR$/app/filter.html" />
         <option value="$PROJECT_DIR$/app/js/controllers/toDoController.js" />
-        <option value="$PROJECT_DIR$/app/css/style.css" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/css/style.css" />
       </list>
     </option>
   </component>
@@ -497,11 +496,12 @@
       <workItem from="1485179399547" duration="4876000" />
       <workItem from="1485191438318" duration="10134000" />
       <workItem from="1485303409789" duration="6222000" />
+      <workItem from="1485391538378" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105472000" />
+    <option name="totallyTimeSpent" value="110735000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -561,7 +561,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -598,7 +598,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -635,7 +635,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -673,7 +673,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -711,7 +711,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -749,7 +749,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -779,7 +779,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -816,7 +816,7 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -896,7 +896,7 @@
     <entry file="file://$PROJECT_DIR$/app/filter.html" />
     <entry file="file://$PROJECT_DIR$/app/js/services/agendaAPIService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
+        <state relative-caret-position="603">
           <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding />
         </state>
@@ -904,28 +904,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="513">
+          <caret line="123" column="48" lean-forward="false" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="286" column="20" lean-forward="false" selection-start-line="286" selection-start-column="20" selection-end-line="286" selection-end-column="20" />
+        <state relative-caret-position="278">
+          <caret line="293" column="23" lean-forward="false" selection-start-line="293" selection-start-column="23" selection-end-line="293" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+        <state relative-caret-position="458">
+          <caret line="325" column="18" lean-forward="true" selection-start-line="325" selection-start-column="18" selection-end-line="325" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#img#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10893#10899#0" expanded="true" />
+            <element signature="e#10341#10347#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
