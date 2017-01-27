@@ -54,6 +54,18 @@ div#interface h1 {
 	padding-bottom: 15px;
 }
 
+#img_welcome {
+	height: 406px;
+	margin-top: -2px;
+}
+
+#please {
+	margin-top: 52px;
+	margin-bottom: -60px;
+	color: green;
+	font-size: 110%;
+}
+
 div#input_tarefa div input {
 	height: 35px;
 	width: 100%;
@@ -154,7 +166,7 @@ button#btn_delete {
 	width: 100%;
 	margin-top: 6px;
 	background-color: white;
-	border-color:  black;
+	border-color:  #215FDC;
 	color: black;
 }
 

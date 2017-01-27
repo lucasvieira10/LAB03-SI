@@ -33,15 +33,7 @@
 
             	<!-- Sub menu para as tarefas -->
             	<ul class="dropdown-menu">
-
-                  <!--<li ng-repeat="agenda in agendas">-->
-                    <!--<a href="#" ng-click="carregarDadosDaAgendaAtual(agenda)">{{agenda.nome}}</a>-->
-                  <!--</li>-->
-
-                  <!--<li><a tabindex="0">oi</a></li>-->
-                  <!--<li class="divider"></li>-->
                   <li><a href="#openModalVerDetalhes" ng-click="calcularTotalDeTarefasACumprir()">Ver detalhes</a></li>
-
                 </ul>
             </li>
 
@@ -58,7 +50,7 @@
                 </ul>
             </li>
 
-            <li><a href="#openModalFiltrarPrioridade">Filtrar</a></li>
+            <li ng-show="agendaFoiSelecionada"><a href="#openModalFiltrarPrioridade">Filtrar</a></li>
 
             <li><a href="https://github.com/lucasvieira10" target="_blank">Sobre</a></li>
 
@@ -77,11 +69,13 @@
       <section ng-show="!agendaFoiSelecionada" id="conteudo_principal">
         <h1>Seja Bem-Vindo!</h1>
 
-        <img src="pictures/tarefas.jpg" style="height: 407px"><br>
+        <img id="img_welcome" src="pictures/tarefas.jpg"><br>
+
+        <p id="please" ng-show="agendas.length > 0">Por favor, selecione uma agenda!</p>
 
         <ul class="pagination">
           <li><a href="#">«</a></li>
-          <li ng-repeat="agenda in agendas | orderBy: 'nome'" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
+          <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
             <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
               {{agendas.indexOf(agenda) + 1}}
             </a>
@@ -145,10 +139,10 @@
         <h2>Detalhes</h2>
 
         <li class="list-group-item">
-          Total de tarefas para cumprir: <span>{{tarefasParaCumprir}}</span>
+          Total de tarefas para cumprir: <span>{{agendaAtual.tarefasParaCumprir}}</span>
         </li>
         <li class="list-group-item">
-          Total de tarefas concluidas: <span>{{tarefasJaConcluidas}}</span>
+          Total de tarefas concluidas: <span>{{agendaAtual.tarefasJaConcluidas}}</span>
         </li>
 
         <!-- Barra de Progresso -->
@@ -207,7 +201,7 @@
 
         <ul class="pagination">
           <li><a href="#">«</a></li>
-          <li ng-repeat="agenda in agendas | orderBy: 'nome'" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
+          <li ng-repeat="agenda in agendas" ng-click="carregarDadosDaAgendaAtual(agenda); select(agenda)">
             <a ng-attr-title="{{agenda.nome}}" ng-class="{active: isActive(agenda)}" href="">
               {{agendas.indexOf(agenda) + 1}}
             </a>
@@ -267,7 +261,7 @@
 
           <a href="#close">
             <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-remove" ng-click="resetarMudancasNaoSalvas()"> Cancelar</span>
+              <span class="glyphicon glyphicon-remove"> Cancelar</span>
             </button>
           </a>
         </div>
@@ -370,6 +364,9 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/controllers/toDoController.js"></script>
     <script src="js/services/agendaAPIService.js"></script>
+
+    <script src="js/models/agenda.js"></script>
+    <script src="js/models/tarefa.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
