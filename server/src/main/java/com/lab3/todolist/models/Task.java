@@ -1,11 +1,11 @@
-package com.lab3.todolist.model;
+package com.lab3.todolist.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Created by Lucas L. Vieira.
- *
  * This class represent a task.
+ *
+ * @author Lucas L. Vieira.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Task {

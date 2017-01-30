@@ -1,7 +1,7 @@
 package com.lab3.todolist.controller;
 
-import com.lab3.todolist.model.Agenda;
-import com.lab3.todolist.model.Task;
+import com.lab3.todolist.models.Agenda;
+import com.lab3.todolist.models.Task;
 import com.lab3.todolist.repository.AgendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Lucas L. Vieira.
+ * AgendaController that contains the methods for HTTP requests.
+ *
+ * @author Lucas L. Vieira.
  */
 @RestController
 public class AgendaController {
@@ -29,9 +31,9 @@ public class AgendaController {
     private AgendaRepository agendaRepository;
 
     /**
-     * This method return all of agendas
+     * This method return all of saved agendas.
      *
-     * @return agendas
+     * @return agendas.
      */
     @GetMapping(value = AGENDA_ROUTE)
     public List<Agenda> getAgendas() {
@@ -39,10 +41,10 @@ public class AgendaController {
     }
 
     /**
-     * This method save a agenda
+     * This method save an agenda.
      *
-     * @param agenda agenda for save
-     * @return agenda saved
+     * @param agenda for save.
+     * @return agenda saved.
      */
     @PostMapping(value = AGENDA_ROUTE,
                 produces = MediaType.APPLICATION_JSON_VALUE,
@@ -55,11 +57,11 @@ public class AgendaController {
     }
 
     /**
-     * This method edit a agenda
+     * This method edit a specific agenda using your ID.
      *
-     * @param id id of a agenda
-     * @param agenda agenda for edit
-     * @return agenda edited
+     * @param id of a agenda.
+     * @param agenda for edit.
+     * @return agenda edited.
      */
     @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID,
                 produces = MediaType.APPLICATION_JSON_VALUE,
@@ -80,10 +82,10 @@ public class AgendaController {
     }
 
     /**
-     * This method remove a agenda
+     * This method remove a specific agenda.
      *
-     * @param id id of a agenda
-     * @return void
+     * @param id of a agenda.
+     * @return void.
      */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID)
     public ResponseEntity<Void> deleteAgenda(@PathVariable(AGENDA_ID) String id) {
@@ -98,9 +100,9 @@ public class AgendaController {
     }
 
     /**
-     * This method remove all of agendas
+     * This method remove all of saved agendas.
      *
-     * @return void
+     * @return void.
      */
     @DeleteMapping(value =  AGENDA_ROUTE)
     public ResponseEntity<Void> deleteAgendas() {
@@ -110,9 +112,9 @@ public class AgendaController {
     }
 
     /**
-     * This method return all of tasks
+     * This method return all of saved tasks.
      *
-     * @return tasks
+     * @return tasks.
      */
     @GetMapping(value = AGENDA_ROUTE + TASK_ROUTE)
     public List<Task> getAllTasks() {
@@ -126,10 +128,10 @@ public class AgendaController {
     }
 
     /**
-     * This method return all of tasks in a agenda.
+     * This method return all of saved tasks in a specific agenda.
      *
-     * @param id id of a agenda
-     * @return tasks
+     * @param id of a agenda.
+     * @return tasks.
      */
     @GetMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
     public List<Task> getTasks(@PathVariable(AGENDA_ID) String id) {
@@ -139,11 +141,11 @@ public class AgendaController {
     }
 
     /**
-     * This method save a task
+     * This method save a task in a agenda.
      *
-     * @param id id of a task
-     * @param task task for save
-     * @return task saved
+     * @param id of a task.
+     * @param task for save.
+     * @return task saved.
      */
     @PostMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE,
                 produces = MediaType.APPLICATION_JSON_VALUE,
@@ -159,12 +161,12 @@ public class AgendaController {
     }
 
     /**
-     * This method edit a task
+     * This method edit a task in a agenda.
      *
-     * @param agendaID id of an agenda that contains the task
-     * @param taskId id of a task
-     * @param task task for edit
-     * @return task edited
+     * @param agendaID of an agenda that contains the task.
+     * @param taskId of a task.
+     * @param task for edit.
+     * @return task edited.
      */
     @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID,
                 produces = MediaType.APPLICATION_JSON_VALUE,
@@ -195,11 +197,11 @@ public class AgendaController {
     }
 
     /**
-     * This method remove a task.
+     * This method remove a task in a agenda.
      *
-     * @param agendaID id of an agenda that contains the task
-     * @param taskId id of a task
-     * @return void
+     * @param agendaID of an agenda that contains the task.
+     * @param taskId of a task.
+     * @return void.
      */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID)
     public ResponseEntity<Void> deleteTask(@PathVariable(AGENDA_ID) String agendaID,
@@ -224,11 +226,11 @@ public class AgendaController {
     /**
      * This method remove all of tasks in an agenda.
      *
-     * @param agendaID id of an agenda that contains the task
-     * @return void
+     * @param agendaID of an agenda that contains the task.
+     * @return void.
      */
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE)
-    public ResponseEntity<Void> removeTasks(@PathVariable(AGENDA_ID) String agendaID) {
+    public ResponseEntity<Void> deleteTasks(@PathVariable(AGENDA_ID) String agendaID) {
         Agenda agenda = agendaRepository.findById(agendaID);
 
         agenda.getTarefas().clear();

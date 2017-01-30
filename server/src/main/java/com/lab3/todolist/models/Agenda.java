@@ -1,4 +1,4 @@
-package com.lab3.todolist.model;
+package com.lab3.todolist.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Lucas L. Vieira.
- *
  * This class represent an agenda.
+ *
+ * @author Lucas L. Vieira.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Agenda {
