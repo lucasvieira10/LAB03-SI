@@ -161,19 +161,17 @@ button#button_addTarefa {
 /*}*/
 
 button#btn_delete {
-	padding: 1px;
+	padding: 0px!important;
 	border-radius: 30px;
 	width: 100%;
 	margin-top: 6px;
 	background-color: white;
-	border-color:  #215FDC;
+	border-color:  black;
 	color: black;
 }
 
 button#btn_delete:hover {
-	background-color: #bf201c;
-	color: white;
-	border-color:  #bf201c;
+	background-color: #f2f2f2;
 }
 
 footer#rodape {
@@ -340,6 +338,36 @@ modal para criar agenda
 	margin-left: -13px;
 	background-color: white;
 	border-radius: 6px;
+}
+
+#ir_subtarefa {
+	margin-left: -13px;
+	width: 107%;
+	background-color: #e4e4e4;
+}
+
+#modal_subtarefa {
+	background-color: #161616;
+	color: white;
+	font-size: 200%;
+	border-radius: 5px;
+	padding-bottom: 0px;
+	margin-top: -20px;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-bottom: 1px;
+	padding: 1px;
+}
+
+#openModalSubTarefa div#list_tarefa {
+	width: 107%;
+	margin-left: -13px;
+	margin-top: 10px;
+}
+
+#openModalSubTarefa button#save_subtarefa {
+	width: 107%;
+	margin-left: -13px;
 }
 
 .modalDialog input {

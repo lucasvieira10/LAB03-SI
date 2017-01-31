@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represent an agenda.
+ * Classe que representa uma agenda.
  *
  * @author Lucas L. Vieira.
  */
@@ -21,21 +21,21 @@ public class Agenda {
     private int tarefasParaCumprir;
     private int tarefasJaConcluidas;
 
-    private List<Task> tarefas;
+    private List<Tarefa> tarefas;
 
     public Agenda() {
         this.tarefas = new ArrayList<>();
     }
 
-    public Agenda(String nome, int tarefasParaCumprir, int tarefasJaConcluidas, List<Task> tarefas) {
+    public Agenda(String nome, int tarefasParaCumprir, int tarefasJaConcluidas, List<Tarefa> tarefas) {
         this.nome = nome;
         this.tarefasParaCumprir = tarefasParaCumprir;
         this.tarefasJaConcluidas = tarefasJaConcluidas;
         this.tarefas = tarefas;
     }
 
-    public void addTarefa(Task task) {
-        this.tarefas.add(task);
+    public void addTarefa(Tarefa tarefa) {
+        this.tarefas.add(tarefa);
     }
 
     public String getId() {
@@ -70,11 +70,11 @@ public class Agenda {
         this.tarefasJaConcluidas = tarefasJaConcluidas;
     }
 
-    public List<Task> getTarefas() {
+    public List<Tarefa> getTarefas() {
         return tarefas;
     }
 
-    public void setTarefas(List<Task> tarefas) {
+    public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
 
@@ -86,7 +86,6 @@ public class Agenda {
         Agenda that = (Agenda) o;
 
         return nome != null ? nome.equals(that.nome) : that.nome == null;
-
     }
 
     @Override

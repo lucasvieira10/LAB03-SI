@@ -153,7 +153,7 @@
         </div>
       </div>
 
-        <button ng-click="removerAgenda()" id="btn_delete" type="button" class="btn">
+        <button ng-click="removerAgenda()" id="btn_delete" type="button" class="form-control">
           <span> Excluir agenda</span>
         </button>
 
@@ -252,6 +252,8 @@
           </div>
 
           <input ng-model="tarefaAtual.categoria" type="text" class="form-control" placeholder="Escreva a categoria..."/>
+
+          <a href="#openModalSubTarefa"><button id="ir_subtarefa" class="form-control">Subtarefas</button></a>
 
           <a href="#close">
             <button ng-click="atualizarTarefa()" type="button" class="btn btn-success" id="btn_alterarTarefa">
@@ -352,6 +354,44 @@
         </div>
       </div>
 
+      <!-- Modal para as sub - tarefas -->
+      <div id="openModalSubTarefa" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close">X</a>
+          <div id="modal_subtarefa"><span>{{tarefaAtual.nome}}</span></div>
+
+          <div>
+            <input type="text" ng-model="subtarefa.nome" class="form-control" id="subtarefa"
+                   placeholder="Escreva uma subtarefa..." ng-minlength="10" maxlength="70" name="subtarefa">
+          </div>
+
+          <button type="button" class="btn btn-success" id="save_subtarefa">
+            <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
+          </button>
+
+          <div id="list_tarefa">
+
+            <li class="list-group-item" ng-repeat="subtarefa in tarefaAtual.subtarefas" >
+
+              <div class="checkbox">
+                <label ng-class="{selecionada: subtarefa.selecionada}">
+                  <input type="checkbox" ng-model="subtarefa.selecionada">
+
+                  <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+
+                  <span id="nomeTarefa">{{subtarefa.nome}}</span>
+                </label>
+
+                <button style="margin-top: -4px" type="button" class="btn btn-danger" >
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+
+              </div>
+            </li>
+          </div>
+
+        </div>
+      </div>
 
     <!-- Rodape da pagina -->
     <footer id="rodape">

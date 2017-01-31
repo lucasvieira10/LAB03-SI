@@ -2,13 +2,16 @@ package com.lab3.todolist.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * This class represent a task.
+ * Classe que representa uma Tarefa.
  *
  * @author Lucas L. Vieira.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Task {
+public class Tarefa {
 
     private String id;
     private String nome;
@@ -16,16 +19,22 @@ public class Task {
     private boolean selecionada;
     private String comentario;
     private String categoria;
+    private List<Subtarefa> subtarefas;
 
-    public Task() {}
+    public Tarefa() {
+        this.subtarefas = new ArrayList<>();
+    }
 
-    public Task(String id, String nome, int prioridade, boolean selecionada, String comentario, String categoria) {
+    public Tarefa(String id, String nome, int prioridade, boolean selecionada,
+                  String comentario, String categoria, List<Subtarefa> subtarefas) {
+
         this.id = id;
         this.nome = nome;
         this.prioridade = prioridade;
         this.selecionada = selecionada;
         this.comentario = comentario;
         this.categoria = categoria;
+        this.subtarefas = subtarefas;
     }
 
     public String getId() {
@@ -76,15 +85,22 @@ public class Task {
         this.categoria = categoria;
     }
 
+    public List<Subtarefa> getSubtarefas() {
+        return subtarefas;
+    }
+
+    public void setSubtarefas(List<Subtarefa> subtarefas) {
+        this.subtarefas = subtarefas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Task task = (Task) o;
+        Tarefa tarefa = (Tarefa) o;
 
-        return nome != null ? nome.equals(task.nome) : task.nome == null;
-
+        return nome != null ? nome.equals(tarefa.nome) : tarefa.nome == null;
     }
 
     @Override
@@ -94,13 +110,14 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "Tarefa{" +
                 "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
                 ", prioridade=" + prioridade +
                 ", selecionada=" + selecionada +
                 ", comentario='" + comentario + '\'' +
                 ", categoria='" + categoria + '\'' +
+                ", subtarefas=" + subtarefas +
                 '}';
     }
 }
