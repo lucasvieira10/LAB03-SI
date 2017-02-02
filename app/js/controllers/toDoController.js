@@ -61,6 +61,19 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 		_atualizarAgenda();
 	};
 
+	self.salvarSubtarefa = function (subtarefa) {
+	    subtarefa.id = Date.now();
+        agendaAPI.salvarSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefa).then(_carregarSubtarefas);
+    };
+
+	self.removerSubtarefa = function (subtarefaID) {
+        agendaAPI.removerSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefaID).then(_carregarSubtarefas);
+    };
+
+	self.atualizarSubtarefa = function (subtarefa) {
+        agendaAPI.atualizarSubtarefa(subtarefa, self.agendaAtual.id, self.tarefaAtual.id);
+    };
+
 	self.porcentagemDasTarefasConcluidas = function() {
 		var porcentagem = (self.agendaAtual.tarefasJaConcluidas / self.tarefas.length) * 100;
 		return parseFloat(porcentagem.toFixed(1));
@@ -180,6 +193,12 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
             self.tarefas = tarefas;
 
             self.atualizarStatusDasTarefas();
+        });
+    };
+
+    var _carregarSubtarefas = function () {
+        agendaAPI.carregarSubtarefas(self.agendaAtual.id, self.tarefaAtual.id).then(function (subtarefas) {
+            self.tarefaAtual.subtarefas = subtarefas;
         });
     };
 

@@ -65,6 +65,38 @@ public class SubtaskController extends Routes {
         return new ResponseEntity<>(subtarefa, HttpStatus.CREATED);
     }
 
+    @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID
+            + SUBTASK_ROUTE + SUBTASK_ROUTE_ID,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<Subtarefa> updateTask(@PathVariable(AGENDA_ID) String agendaID,
+                                                @PathVariable(TASK_ID) String taskId,
+                                                @PathVariable(SUBTASK_ID) String subTaskID,
+                                                @RequestBody Subtarefa subtarefa) {
+
+        Agenda agenda = agendaRepository.findById(agendaID);
+
+        List<Tarefa> tarefas = agenda.getTarefas();
+
+        for (Tarefa t : tarefas) {
+            if (t.getId().equals(taskId)) {
+                for (Subtarefa s : t.getSubtarefas()) {
+                    if (s.getId().equals(subTaskID)) {
+                        s.setSelecionada(subtarefa.isSelecionada());
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
+
+        agendaRepository.save(agenda);
+
+        return new ResponseEntity<>(subtarefa, HttpStatus.OK);
+    }
+
     @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID
             + SUBTASK_ROUTE + SUBTASK_ROUTE_ID)
     public ResponseEntity<Void> deleteSubtask(@PathVariable(AGENDA_ID) String agendaID,

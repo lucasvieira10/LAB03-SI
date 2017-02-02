@@ -356,16 +356,16 @@
 
       <!-- Modal para as sub - tarefas -->
       <div id="openModalSubTarefa" class="modalDialog">
-        <div>
+        <div class="modal-body">
           <a href="#close" title="Close" class="close">X</a>
           <div id="modal_subtarefa"><span>{{tarefaAtual.nome}}</span></div>
 
           <div>
             <input type="text" ng-model="subtarefa.nome" class="form-control" id="subtarefa"
-                   placeholder="Escreva uma subtarefa..." ng-minlength="10" maxlength="70" name="subtarefa">
+                   placeholder="Escreva uma subtarefa..." name="subtarefa">
           </div>
 
-          <button type="button" class="btn btn-success" id="save_subtarefa">
+          <button ng-click="salvarSubtarefa(subtarefa)" type="button" class="btn btn-success" id="save_subtarefa">
             <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
           </button>
 
@@ -373,16 +373,19 @@
 
             <li class="list-group-item" ng-repeat="subtarefa in tarefaAtual.subtarefas" >
 
+              <!--{{subtarefa}}-->
+
               <div class="checkbox">
                 <label ng-class="{selecionada: subtarefa.selecionada}">
-                  <input type="checkbox" ng-model="subtarefa.selecionada">
+                  <input type="checkbox" ng-model="subtarefa.selecionada"
+                    ng-click="atualizarSubtarefa(subtarefa)">
 
                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
 
                   <span id="nomeTarefa">{{subtarefa.nome}}</span>
                 </label>
 
-                <button style="margin-top: -4px" type="button" class="btn btn-danger" >
+                <button ng-click="removerSubtarefa(subtarefa.id)" style="margin-top: -4px" type="button" class="btn btn-danger" >
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
 

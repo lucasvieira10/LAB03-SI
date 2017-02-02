@@ -81,6 +81,36 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
         return promessa.promise;
     };
 
+	var _salvarSubtarefa = function (agendaID, tarefaID, subtarefa) {
+        var url = agendasUrl + "/" + agendaID + "/tasks/" + tarefaID + "/subtasks";
+		return $http.post(url, subtarefa);
+    };
+
+	var _carregarSubtarefas = function (agendaID, tarefaID) {
+        var url = agendasUrl + "/" + agendaID + "/tasks/" + tarefaID + "/subtasks";
+
+        var promessa = $q.defer();
+
+        $http.get(url)
+            .then(function (resultado) {
+                var subtarefas = resultado.data;
+
+                promessa.resolve(subtarefas);
+            });
+
+        return promessa.promise;
+    };
+
+	var _removerSubtarefa = function (agendaID, tarefaID, subtarefaID) {
+        var url = agendasUrl + "/" + agendaID + "/tasks/" + tarefaID + "/subtasks/" + subtarefaID;
+        return $http.delete(url);
+    };
+
+    var _atualizarSubtarefa = function(subtarefa, agendaID, tarefaID) {
+        var url = agendasUrl + "/" + agendaID + "/tasks/" + tarefaID + "/subtasks/" + subtarefa.id;
+        return $http.put(url, subtarefa);
+    };
+
 	return {
 		obterAgendas: _obterAgendas,
 		salvarAgenda: _salvarAgenda,
@@ -92,6 +122,10 @@ angular.module("toDoList").factory("agendaAPI", function ($q, $http) {
 		atualizarTarefa: _atualizarTarefa,
 		removerAgenda: _removerAgenda,
 		removerTarefas: _removerTarefas,
-        obterTarefasDasAgendas: _obterTarefasDasAgendas
+        obterTarefasDasAgendas: _obterTarefasDasAgendas,
+		salvarSubtarefa: _salvarSubtarefa,
+		carregarSubtarefas: _carregarSubtarefas,
+        removerSubtarefa: _removerSubtarefa,
+		atualizarSubtarefa: _atualizarSubtarefa
 	};
 });
