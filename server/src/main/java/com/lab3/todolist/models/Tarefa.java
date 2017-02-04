@@ -5,11 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe que representa uma Tarefa.
- *
- * @author Lucas L. Vieira.
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Tarefa {
 

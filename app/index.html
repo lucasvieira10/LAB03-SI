@@ -357,7 +357,6 @@
       <!-- Modal para as sub - tarefas -->
       <div id="openModalSubTarefa" class="modalDialog">
         <div class="modal-body">
-          <a href="#close" title="Close" class="close">X</a>
           <div id="modal_subtarefa"><span>{{tarefaAtual.nome}}</span></div>
 
           <div>
@@ -365,9 +364,17 @@
                    placeholder="Escreva uma subtarefa..." name="subtarefa">
           </div>
 
+          <div id="button_save_close">
           <button ng-click="salvarSubtarefa(subtarefa)" type="button" class="btn btn-success" id="save_subtarefa">
             <span class="glyphicon glyphicon-ok"> Salvar&nbsp;</span>
           </button>
+
+          <a href="#close">
+            <button id="fechar_subtarefas" type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove"> Fechar</span>
+            </button>
+          </a>
+          </div>
 
           <div id="list_tarefa">
 
@@ -407,6 +414,8 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/controllers/toDoController.js"></script>
     <script src="js/services/agendaAPIService.js"></script>
+    <script src="js/services/tarefaAPIService.js"></script>
+    <script src="js/services/subtarefaAPIService.js"></script>
 
     <script src="js/models/agenda.js"></script>
     <script src="js/models/tarefa.js"></script>

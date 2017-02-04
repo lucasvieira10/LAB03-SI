@@ -2,11 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50736972-0d2c-4182-9a8d-fd87cb05bf7e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/services/subtarefaAPIService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/services/tarefaAPIService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/routes/Routes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/routes/RoutesAgenda.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/routes/RoutesSubtask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/routes/RoutesTask.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/util/Routes.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/style.css" afterPath="$PROJECT_DIR$/app/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/toDoController.js" afterPath="$PROJECT_DIR$/app/js/controllers/toDoController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/models/tarefa.js" afterPath="$PROJECT_DIR$/app/js/models/tarefa.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services/agendaAPIService.js" afterPath="$PROJECT_DIR$/app/js/services/agendaAPIService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/AgendaController.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/AgendaController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/SubtaskController.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/SubtaskController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/TaskController.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/controllers/TaskController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Agenda.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Agenda.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Subtarefa.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Subtarefa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Tarefa.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/models/Tarefa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/repository/AgendaRepository.java" afterPath="$PROJECT_DIR$/server/src/main/java/com/lab3/todolist/repository/AgendaRepository.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,25 +51,16 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="390" column="0" lean-forward="true" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+            <state relative-caret-position="7794">
+              <caret line="433" column="0" lean-forward="true" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#10259#10265#0" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#14713#14719#0" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#14691#14697#0" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#15932#15938#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toDoController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -61,8 +68,18 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="383" column="11" lean-forward="false" selection-start-line="383" selection-start-column="1" selection-end-line="383" selection-end-column="11" />
+            <state relative-caret-position="162">
+              <caret line="364" column="21" lean-forward="true" selection-start-line="364" selection-start-column="21" selection-end-line="364" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toDoController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="71" column="76" lean-forward="true" selection-start-line="71" selection-start-column="76" selection-end-line="71" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -71,8 +88,28 @@
       <file leaf-file-name="agendaAPIService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/services/agendaAPIService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="109" column="99" lean-forward="true" selection-start-line="109" selection-start-column="99" selection-end-line="109" selection-end-column="99" />
+            <state relative-caret-position="756">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tarefaAPIService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services/tarefaAPIService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="57" lean-forward="false" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="subtarefaAPIService.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/services/subtarefaAPIService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,9 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>var</find>
-      <find>_tarefaEstaSelecionada</find>
-      <find>excluir a</find>
       <find>Excluir a</find>
       <find>salva</find>
       <find>salvar a</find>
@@ -104,7 +138,6 @@
       <find>excluir agenda</find>
       <find>btn_delete</find>
       <find>modal</find>
-      <find>salvarSubtarefa</find>
       <find>_carregarTarefas</find>
       <find>filtra</find>
       <find>openModalFiltrarPrioridade</find>
@@ -120,6 +153,10 @@
       <find>_atualizarAgenda</find>
       <find>atualiza</find>
       <find>checkbox</find>
+      <find>agendaAPI</find>
+      <find>&quot;#close</find>
+      <find>save_</find>
+      <find>salvarSubtarefa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,12 +171,15 @@
         <option value="$PROJECT_DIR$/app/agendas.html" />
         <option value="$PROJECT_DIR$/app/filter.html" />
         <option value="$PROJECT_DIR$/app/js/models/angeda.js" />
-        <option value="$PROJECT_DIR$/app/js/models/tarefa.js" />
         <option value="$PROJECT_DIR$/app/js/models/agenda.js" />
-        <option value="$PROJECT_DIR$/app/css/style.css" />
-        <option value="$PROJECT_DIR$/app/js/controllers/toDoController.js" />
+        <option value="$PROJECT_DIR$/app/js/services/tarefaAPIService.js" />
+        <option value="$PROJECT_DIR$/app/js/services/subtarefaAPIService.js" />
         <option value="$PROJECT_DIR$/app/js/services/agendaAPIService.js" />
+        <option value="$PROJECT_DIR$/app/js/models/tarefa.js" />
+        <option value="$PROJECT_DIR$/app/js/controllers/tarefaController.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers/toDoController.js" />
+        <option value="$PROJECT_DIR$/app/css/style.css" />
       </list>
     </option>
   </component>
@@ -151,10 +191,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="-4" />
-    <option name="width" value="1368" />
-    <option name="height" value="773" />
+    <option name="y" value="24" />
+    <option name="width" value="1366" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
@@ -530,11 +569,15 @@
       <workItem from="1485740028012" duration="4723000" />
       <workItem from="1485818396182" duration="3640000" />
       <workItem from="1485991894278" duration="9010000" />
+      <workItem from="1486164508185" duration="517000" />
+      <workItem from="1486165043477" duration="3731000" />
+      <workItem from="1486173785990" duration="76000" />
+      <workItem from="1486173883467" duration="1044000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137310000" />
+    <option name="totallyTimeSpent" value="142678000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -546,7 +589,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-4" width="1368" height="773" extended-state="6" />
+    <frame x="0" y="24" width="1366" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21303074" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -579,36 +622,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4284">
-          <caret line="238" column="42" lean-forward="false" selection-start-line="238" selection-start-column="42" selection-end-line="238" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10259#10265#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4410">
-          <caret line="245" column="17" lean-forward="false" selection-start-line="245" selection-start-column="17" selection-end-line="245" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/services/agendaAPIService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1746">
@@ -625,8 +638,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -663,8 +677,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,8 +717,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -741,8 +757,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -780,8 +797,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -811,8 +829,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -849,8 +868,9 @@
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -929,53 +949,69 @@
     <entry file="file://$PROJECT_DIR$/app/js/models/agenda.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="80" lean-forward="false" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/subtarefaAPIService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/tarefaAPIService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="57" lean-forward="false" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/models/tarefa.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="78" lean-forward="false" selection-start-line="0" selection-start-column="78" selection-end-line="0" selection-end-column="78" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="383" column="11" lean-forward="false" selection-start-line="383" selection-start-column="1" selection-end-line="383" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/tarefaController.js" />
     <entry file="file://$PROJECT_DIR$/app/js/services/agendaAPIService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="109" column="99" lean-forward="true" selection-start-line="109" selection-start-column="99" selection-end-line="109" selection-end-column="99" />
+        <state relative-caret-position="756">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/toDoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+        <state relative-caret-position="431">
+          <caret line="71" column="76" lean-forward="true" selection-start-line="71" selection-start-column="76" selection-end-line="71" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="364" column="21" lean-forward="true" selection-start-line="364" selection-start-column="21" selection-end-line="364" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="390" column="0" lean-forward="true" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+        <state relative-caret-position="7794">
+          <caret line="433" column="0" lean-forward="true" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#10259#10265#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#14713#14719#0" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#14691#14697#0" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#li#0;n#div#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#15932#15938#0" expanded="true" />
           </folding>
         </state>
       </provider>

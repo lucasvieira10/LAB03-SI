@@ -365,9 +365,12 @@ modal para criar agenda
 	margin-top: 10px;
 }
 
-#openModalSubTarefa button#save_subtarefa {
-	width: 107%;
-	margin-left: -13px;
+#button_save_close {
+	display: inline;
+}
+
+#button_save_close button#fechar_subtarefas {
+	width: 30%;
 }
 
 .modalDialog input {

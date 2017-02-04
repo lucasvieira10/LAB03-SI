@@ -6,11 +6,6 @@ import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe que representa uma agenda.
- *
- * @author Lucas L. Vieira.
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Agenda {
 

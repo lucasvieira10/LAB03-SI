@@ -1,4 +1,4 @@
-var Tarefa = function (nome, prioridade, selecionada, comentario, categoria) {
+var Tarefa = function (nome, prioridade, selecionada, comentario, categoria, subtarefas) {
     var self = this;
 
     self.nome = nome;
@@ -6,4 +6,5 @@ var Tarefa = function (nome, prioridade, selecionada, comentario, categoria) {
     self.selecionada = selecionada;
     self.comentario = comentario;
     self.categoria = categoria;
+    self.subtarefas = subtarefas;
 };

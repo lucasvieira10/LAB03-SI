@@ -1,13 +1,13 @@
 angular.module("toDoList", []);
 
-angular.module("toDoList").controller("toDoListController", function($scope, agendaAPI) {
+angular.module("toDoList").controller("toDoListController", function($scope, agendaAPI, tarefaAPI, subtarefaAPI) {
 	var self = $scope;
 
 	self.agendas = [];
 	self.tarefas = [];
 
     self.agendaAtual = new Agenda("", 0, 0, []);
-    self.tarefaAtual = new Tarefa("", 0, false, "", "");
+    self.tarefaAtual = new Tarefa("", 0, false, "", "", []);
 
 	self.prioridades = [1, 2, 3, 4];
 	self.corDasPrioridades = ["Red", "Blue", "DarkOrange", "Green"];
@@ -45,7 +45,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 
 	self.salvarTarefa = function(tarefa) {
         tarefa.id = Date.now();
-        agendaAPI.salvarTarefa(tarefa, self.agendaAtual.id).then(_carregarTarefas);
+        tarefaAPI.salvarTarefa(tarefa, self.agendaAtual.id).then(_carregarTarefas);
 
         self.agendaAtual.tarefasParaCumprir++;
         self.tarefaAtual = tarefa;
@@ -57,21 +57,23 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	};
 
 	self.removerTarefa = function(tarefa) {
-		agendaAPI.removerTarefa(self.agendaAtual.id, tarefa.id).then(_carregarTarefas);
+        tarefaAPI.removerTarefa(self.agendaAtual.id, tarefa.id).then(_carregarTarefas);
 		_atualizarAgenda();
 	};
 
 	self.salvarSubtarefa = function (subtarefa) {
 	    subtarefa.id = Date.now();
-        agendaAPI.salvarSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefa).then(_carregarSubtarefas);
+        subtarefaAPI.salvarSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefa).then(_carregarSubtarefas);
+
+        delete self.subtarefa;
     };
 
 	self.removerSubtarefa = function (subtarefaID) {
-        agendaAPI.removerSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefaID).then(_carregarSubtarefas);
+        subtarefaAPI.removerSubtarefa(self.agendaAtual.id, self.tarefaAtual.id, subtarefaID).then(_carregarSubtarefas);
     };
 
 	self.atualizarSubtarefa = function (subtarefa) {
-        agendaAPI.atualizarSubtarefa(subtarefa, self.agendaAtual.id, self.tarefaAtual.id);
+        subtarefaAPI.atualizarSubtarefa(subtarefa, self.agendaAtual.id, self.tarefaAtual.id);
     };
 
 	self.porcentagemDasTarefasConcluidas = function() {
@@ -134,7 +136,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	self.calcularTotalDeTarefasACumprir = function () {
 	    self.tarefasParaCumprirEmTodasAgendas = 0;
 
-        agendaAPI.obterTarefasDasAgendas().then(function (tarefas) {
+        tarefaAPI.obterTarefasDasAgendas().then(function (tarefas) {
             for (var i in tarefas) {
                 if (tarefas[i].selecionada == false)
                     self.tarefasParaCumprirEmTodasAgendas += 1;
@@ -143,17 +145,15 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     };
 
 	self.limparTarefas = function() {
-        self.agendaAtual.tarefasParaCumprir = 0;
-        self.agendaAtual.tarefasJaConcluidas = 0;
+        _zerarValoresDaAgendaAtual();
 
         self.tarefas = [];
 
-		agendaAPI.removerTarefas(self.agendaAtual.id).then(_atualizarAgenda);
+        tarefaAPI.removerTarefas(self.agendaAtual.id).then(_atualizarAgenda);
 	};
 
 	self.atualizarStatusDasTarefas = function() {
-		self.agendaAtual.tarefasParaCumprir = 0;
-		self.agendaAtual.tarefasJaConcluidas = 0;
+        _zerarValoresDaAgendaAtual();
 
 		for (var i in self.tarefas) {
 			if (_tarefaEstaSelecionada(self.tarefas[i]))
@@ -166,7 +166,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
 	};
 
     self.atualizarTarefa = function() {
-        agendaAPI.atualizarTarefa(self.tarefaAtual, self.agendaAtual.id);
+        tarefaAPI.atualizarTarefa(self.tarefaAtual, self.agendaAtual.id);
     };
 
     self.select = function(item) {
@@ -189,7 +189,7 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     };
 
     var _carregarTarefas = function () {
-        agendaAPI.obterTarefas(self.agendaAtual.id).then(function (tarefas) {
+        tarefaAPI.obterTarefas(self.agendaAtual.id).then(function (tarefas) {
             self.tarefas = tarefas;
 
             self.atualizarStatusDasTarefas();
@@ -197,13 +197,18 @@ angular.module("toDoList").controller("toDoListController", function($scope, age
     };
 
     var _carregarSubtarefas = function () {
-        agendaAPI.carregarSubtarefas(self.agendaAtual.id, self.tarefaAtual.id).then(function (subtarefas) {
+        subtarefaAPI.carregarSubtarefas(self.agendaAtual.id, self.tarefaAtual.id).then(function (subtarefas) {
             self.tarefaAtual.subtarefas = subtarefas;
         });
     };
 
     var _tarefaEstaSelecionada = function(tarefa) {
         return tarefa.selecionada;
+    };
+
+    var _zerarValoresDaAgendaAtual = function() {
+        self.agendaAtual.tarefasParaCumprir = 0;
+        self.agendaAtual.tarefasJaConcluidas = 0;
     };
 
 	_carregarAgendas();

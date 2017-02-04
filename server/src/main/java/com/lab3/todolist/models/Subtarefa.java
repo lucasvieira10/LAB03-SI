@@ -2,11 +2,6 @@ package com.lab3.todolist.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * Classe que representa uma Subtarefa.
- *
- * @author Lucas L. Vieira.
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Subtarefa {
 

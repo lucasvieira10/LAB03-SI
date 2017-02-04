@@ -4,7 +4,8 @@ import com.lab3.todolist.models.Agenda;
 import com.lab3.todolist.models.Subtarefa;
 import com.lab3.todolist.models.Tarefa;
 import com.lab3.todolist.repository.AgendaRepository;
-import com.lab3.todolist.util.Routes;
+import com.lab3.todolist.routes.Routes;
+import com.lab3.todolist.routes.RoutesSubtask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,20 +14,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * SubtaskController that contains the methods for HTTP requests.
- *
- * @author Lucas L. Vieira.
- */
 @RestController
-public class SubtaskController extends Routes {
+public class SubtaskController {
 
     @Autowired
     private AgendaRepository agendaRepository;
 
-    @GetMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID + SUBTASK_ROUTE)
-    public List<Subtarefa> getSubTasks(@PathVariable(AGENDA_ID) String agendaID,
-                                       @PathVariable(TASK_ID) String taskId) {
+    @GetMapping(value = RoutesSubtask.GET_ROUTE)
+    public List<Subtarefa> getSubTasks(@PathVariable(Routes.AGENDA_ID) String agendaID,
+                                       @PathVariable(Routes.TASK_ID) String taskId) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
@@ -41,12 +37,11 @@ public class SubtaskController extends Routes {
         return null;
     }
 
-    @PostMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID + SUBTASK_ROUTE,
-            produces = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(value = RoutesSubtask.POST_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Subtarefa> addSubtask(@PathVariable(AGENDA_ID) String agendaID,
-                                                @PathVariable(TASK_ID) String taskId,
+    public ResponseEntity<Subtarefa> addSubtask(@PathVariable(Routes.AGENDA_ID) String agendaID,
+                                                @PathVariable(Routes.TASK_ID) String taskId,
                                                 @RequestBody Subtarefa subtarefa) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
@@ -65,14 +60,12 @@ public class SubtaskController extends Routes {
         return new ResponseEntity<>(subtarefa, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID
-            + SUBTASK_ROUTE + SUBTASK_ROUTE_ID,
-            produces = MediaType.APPLICATION_JSON_VALUE,
+    @PutMapping(value = RoutesSubtask.PUT_ROUTE, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Subtarefa> updateTask(@PathVariable(AGENDA_ID) String agendaID,
-                                                @PathVariable(TASK_ID) String taskId,
-                                                @PathVariable(SUBTASK_ID) String subTaskID,
+    public ResponseEntity<Subtarefa> updateTask(@PathVariable(Routes.AGENDA_ID) String agendaID,
+                                                @PathVariable(Routes.TASK_ID) String taskId,
+                                                @PathVariable(Routes.SUBTASK_ID) String subTaskID,
                                                 @RequestBody Subtarefa subtarefa) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
@@ -97,11 +90,10 @@ public class SubtaskController extends Routes {
         return new ResponseEntity<>(subtarefa, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = AGENDA_ROUTE + AGENDA_ROUTE_ID + TASK_ROUTE + TASK_ROUTE_ID
-            + SUBTASK_ROUTE + SUBTASK_ROUTE_ID)
-    public ResponseEntity<Void> deleteSubtask(@PathVariable(AGENDA_ID) String agendaID,
-                                              @PathVariable(TASK_ID) String taskId,
-                                              @PathVariable(SUBTASK_ID) String subTaskID) {
+    @DeleteMapping(value = RoutesSubtask.DELETE_ROUTE)
+    public ResponseEntity<Void> deleteSubtask(@PathVariable(Routes.AGENDA_ID) String agendaID,
+                                              @PathVariable(Routes.TASK_ID) String taskId,
+                                              @PathVariable(Routes.SUBTASK_ID) String subTaskID) {
 
         Agenda agenda = agendaRepository.findById(agendaID);
 
